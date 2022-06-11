@@ -1,8 +1,11 @@
-<h2><?= esc($title) ?></h2>
 
 <?= session()->getFlashdata('error') ?>
-<?= session()->getFlashdata('error') ?>
 <?= service('validation')->listErrors() ?>
+<?php if (session()->getFlashData('success')) { ?>
+<div class="alert alert-success"> <?= session()->getFlashData('sucess') ?> </div>
+<?php }else if(session()->getFlashData('fail')){?>
+<div class="alert alert-danger"> <?= session()->getFlashData('fail') ?> </div>
+<?php } ?>
 <form action="/register/save" method="post">
     <?= csrf_field() ?>
 

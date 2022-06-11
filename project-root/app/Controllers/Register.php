@@ -1,47 +1,60 @@
-<?php
-use App\Controllers\BaseController;
+<?php namespace App\Controllers;
+  
+use CodeIgniter\Controller;
 use App\Models\UserModel;
-
-class Register extends BaseController{
-
+  
+class Register extends BaseController
+{
     public function index()
     {
-        $data = [
-            'title' => 'Register',
-        ];
+        //include helper form
         helper(['form']);
-        return view('templates/header', $data)
-        . view('register')
-        . view('templates/footer');
-
+        $data = ['title' => 'Register'];
+        return view('templates/header', $data) .
+                view('pages/register') .
+                view('templates/footer');
     }
-
-    public function creatUser()
+  
+    public function save()
     {
-        $model = model(UserModel::class);
-        if ($this->request->getMethod() === 'post' && $this->validate([
-            'user_email' => 'required|min_length[3]|max_length[255]',
-            'user_name' => 'required|min_length[3]|max_length[255]',
-            'password' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-        ])) {
-            $model->save([
-                'user_email' => $this->request->getPost('email'),
-                'user_name'  => $this->request->getPost('username'),
-                'password' => $this->request->getPost('password'),
-                'first_name' => $this->request->getPost('firstname'),
-                'last_name' => $this->request->getPost('lastname')
-            ]);
-
-            return view('login');
+        //include helper form
+        helper(['form']);
+        //set rules validation form
+        $rules = [
+            'user_name'     => 'required|min_length[3]|max_length[20]',
+            'first_name'     => 'required|min_length[3]|max_length[20]',
+            'last_name'      => 'required|min_length[3]|max_length[20]',
+            'user_email'    => 'required|min_length[6]|max_length[50]|valid_email',
+            'password'      => 'required|min_length[6]|max_length[200]',
+        ];
+          
+        if($this->validate($rules)){
+            $model = new UserModel();
+            $data = [
+                'user_name'     => $this->request->getPost('user_name'),
+                'user_email'    => $this->request->getPost('user_email'),
+                'first_name'    => $this->request->getPost('first_name'),
+                'last_name'     => $this->request->getPost('last_name'),
+                'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
+            ];
+            $model->save($data);
+            $data = [
+                'title' => 'Register',
+                'message' => 'Successfully Register'
+            ];
+            return view('templates/header', $data) .
+                    view('pages/login') .
+                    view('templates/footer');
+        }else{
+            $data = [
+                'title' => 'Register',
+                'errors' => $this->validator->getErrors()
+            ];
+            return view('templates/header', $data) .
+                view('pages/register') .
+                view('templates/footer');
         }
-
-        return view('templates/header', ['title' => 'New User'])
-            . view('register')
-            . view('templates/footer');
+          
     }
-
-
-
+  
 }

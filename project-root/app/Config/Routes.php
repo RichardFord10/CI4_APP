@@ -40,10 +40,14 @@ $routes->get('news/(:segment)', 'News::view/$1');
 $routes->get('pages/login', 'Login::index');
 $routes->get('news', 'News::index');
 $routes->get('pages/register', 'Register::index');
-$routes->match(['get','post'], 'pages/register', 'Register::createUser');
+$routes->match(['get','post'], 'register/save', 'Register::save');
 $routes->get('/', 'Home::index');
 $routes->get('pages', 'Pages::index');
 $routes->get('(:any)', 'Pages::view/$1');
+$routes->get('/', 'Home::index');
+$routes->get('/dashboard', 'Dashboard::index',['filter' => 'auth']);
+$routes->get('pages/login', 'Login::index');
+$routes->match(['get','post'], 'login/auth', 'Login::auth');
 
 /*
  * --------------------------------------------------------------------
