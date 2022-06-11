@@ -7,7 +7,6 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title><?php esc($title); ?></title>
-        <link src="<?php echo base_url('modules/admin/css/styles.css'); ?>">
-        <link src="<?php echo base_url('modules/admin/js/scripts.css'); ?>">
+        <link href="<?php echo base_url(); ?>/modules/admin/css/styles.css" rel="stylesheet">
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
