@@ -19,9 +19,7 @@ class Login extends BaseController
         $email = $this->request->getPost('user_email');
         $password = $this->request->getPost('password');
         $data = $model->where('user_email', $email)->first();
-        print_r($data);
-        exit();
-        if($data){
+       if($data){
             $pass = $data['password'];
             $verify_pass = password_verify($password, $pass);
             if(!$verify_pass){
@@ -43,7 +41,7 @@ class Login extends BaseController
                     'title' => 'Login',
                 ];
                 $session->setFlashdata('fail', 'Wrong Password');
-                return view('templates/header',$data).view('pages/login').view('templates/footer');
+                return view('templates/header',$data).view('dashboard').view('templates/footer');
 
             }
         }else{

@@ -1,10 +1,4 @@
 
-<?= session()->getFlashdata('error') ?>
-<?php if (session()->getFlashData('success')) { ?>
-<div class="alert alert-success"> <?= session()->getFlashData('sucess') ?> </div>
-<?php }else if(session()->getFlashData('fail')){?>
-<div class="alert alert-danger"> <?= session()->getFlashData('fail') ?> </div>
-<?php } ?>
 <form action="/login/auth" method="post">
     <?= csrf_field() ?>
     <body class="bg-primary">
@@ -18,11 +12,11 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="user_email" type="email" placeholder="name@example.com" />
+                                                <input class="form-control" name = "user_email" id="user_email" type="email" placeholder="name@example.com" />
                                                 <label for="inputEmail">Email address</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="password" type="password" placeholder="Password" />
+                                                <input class="form-control" name = "password" id="password" type="password" placeholder="Password" />
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="form-check mb-3">
@@ -42,20 +36,6 @@
                         </div>
                     </div>
                 </main>
-            </div>
-            <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2022</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
             </div>
         </div>
 

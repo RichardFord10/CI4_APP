@@ -4,27 +4,27 @@ namespace App\Controllers;
 
 use App\Models\NewsModel;
 
-class News extends BaseController
+class Blog extends BaseController
 {
     public function index()
     {
-        $model = model(NewsModel::class);
+        $model = model(BlogModel::class);
 
         $data = [
-            'news'  => $model->getNews(),
+            'news'  => $model->get_blog(),
             'title' => 'News archive',
         ];
 
         return view('templates/header', $data)
-            . view('news/overview')
+            . view('blog/overview')
             . view('templates/footer');
     }
 
     public function view($slug = null)
     {
-        $model = model(NewsModel::class);
+        $model = model(BlogModel::class);
 
-        $data['news'] = $model->getNews($slug);
+        $data['body'] = $model->get_blog($slug);
 
         if (empty($data['news'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: ' . $slug);
@@ -39,7 +39,7 @@ class News extends BaseController
 
     public function create()
     {
-        $model = model(NewsModel::class);
+        $model = model(BlogModel::class);
 
         if ($this->request->getMethod() === 'post' && $this->validate([
             'title' => 'required|min_length[3]|max_length[255]',
@@ -51,11 +51,11 @@ class News extends BaseController
                 'body'  => $this->request->getPost('body'),
             ]);
 
-            return view('news/success');
+            return view('blog/success');
         }
 
         return view('templates/header', ['title' => 'Create a news item'])
-            . view('news/create')
+            . view('blog/create')
             . view('templates/footer');
     }
 }
