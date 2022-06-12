@@ -7,6 +7,10 @@ class Dashboard extends Controller
     public function index()
     {
         $session = session();
-        echo "Welcome back, ".$session->get('username');
+        session()->setFlashData('message', 'Welcome back, ' . $session->get('username'));
+        $data = [
+            'title' => 'Dashboard',
+        ];
+        return view('templates/header', $data).view('pages/dashboard').view('templates/footer');
     }
 }

@@ -45,7 +45,7 @@ $routes->get('/', 'Home::index');
 $routes->get('pages', 'Pages::index');
 $routes->get('(:any)', 'Pages::view/$1');
 $routes->get('/', 'Home::index');
-$routes->get('/dashboard', 'Dashboard::index',['filter' => 'auth']);
+$routes->get('page/dashboard', 'Dashboard::index',['filter' => 'auth']);
 $routes->get('pages/login', 'Login::index');
 $routes->match(['get','post'], 'login/auth', 'Login::auth');
 

@@ -10,12 +10,13 @@ class BlogModel extends Model
     protected $allowedFields = ['title', 'slug', 'body'];
 
 
-    public function get_blog($slug = false)
+    public function get_blog($slug = null)
     {
         if ($slug === false) {
             return $this->findAll();
+        }else{
+            return $this->where(['slug' => $slug])->first();
         }
-        return $this->where(['slug' => $slug])->first();
     }
 
 

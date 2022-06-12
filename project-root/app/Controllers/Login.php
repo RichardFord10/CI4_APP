@@ -22,12 +22,14 @@ class Login extends BaseController
        if($data){
             $pass = $data['password'];
             $verify_pass = password_verify($password, $pass);
-            if(!$verify_pass){
+            if($verify_pass){
                 $ses_data = [
                     'user_id'       => $data['user_id'],
                     'user_name'     => $data['user_name'],
                     'user_email'    => $data['user_email'],
                     'user_name'     => $data['user_name'],
+                    'first_name'    => $data['first_name'],
+                    'last_name'     => $data['last_name'],
                     'logged_in'     => TRUE
                 ];
                 $session->set($ses_data);
@@ -41,11 +43,11 @@ class Login extends BaseController
                     'title' => 'Login',
                 ];
                 $session->setFlashdata('fail', 'Wrong Password');
-                return view('templates/header',$data).view('dashboard').view('templates/footer');
+                return view('templates/header',$data).view('/pages/login').view('templates/footer');
 
             }
         }else{
-            $session->setFlashdata('fail', 'Email not Found');
+            $session->setFlashdata('message', 'Email not Found');
             $data = [
                 'title' => 'Login',
             ];
@@ -59,8 +61,8 @@ class Login extends BaseController
         $session->destroy();
         $data = [
             'title' => 'Login',
-            'message' => 'Successful Logout'
         ];
-        return view('templates/header',$data).view('login').view('templates/footer');
+        $session->setFlashData('success', 'Logout Success!');
+        return view('templates/header',$data).view('/pages/login').view('templates/footer');
     }
 } 

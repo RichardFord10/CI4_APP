@@ -1,2 +1,2 @@
-<h2><?= esc($news['title']) ?></h2>
-<p><?= esc($news['body']) ?></p>
+<h2><?= esc($blog['title']) ?></h2>
+<p><?= esc($blog['body']) ?></p>
