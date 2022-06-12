@@ -12,7 +12,18 @@ class UserModel extends Model
     public function get_user($email){
 
         return $this->where(['user_email' => $email])->first();
+        
 
+    }
+
+    public function get_user_by_id($id){
+
+        $data = $this->where(['user_id' => $id])->first();
+        $username = $data->user_name;
+        $email = $data->user_email;
+        $first_name = $data->first_name;
+        $last_name = $data->last_name;
+    
     }
 
 

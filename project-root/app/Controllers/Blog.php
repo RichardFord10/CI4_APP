@@ -11,8 +11,8 @@ class Blog extends BaseController
         $model = model(BlogModel::class);
 
         $data = [
-            'news'  => $model->get_blog(),
-            'title' => 'News archive',
+            'blog'  => $model->get_blog(),
+            'title' => 'Blog Posts',
         ];
 
         return view('templates/header', $data)
@@ -26,14 +26,15 @@ class Blog extends BaseController
 
         $data['body'] = $model->get_blog($slug);
 
-        if (empty($data['news'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the news item: ' . $slug);
+        if (empty($data['title'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the blog post you requested.');
+
         }
 
-        $data['title'] = $data['news']['title'];
+        $data['title'] = $data['blog']['title'];
 
         return view('templates/header', $data)
-            . view('news/view')
+            . view('blog/view')
             . view('templates/footer');
     }
 
