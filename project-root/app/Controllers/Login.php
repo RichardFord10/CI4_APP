@@ -14,7 +14,6 @@ class Login extends BaseController
   
     public function auth()
     {
-        $session = session();
         $model = new UserModel();
         $email = $this->request->getPost('user_email');
         $password = $this->request->getPost('password');
@@ -32,22 +31,22 @@ class Login extends BaseController
                     'last_name'     => $data['last_name'],
                     'logged_in'     => TRUE
                 ];
-                $session->set($ses_data);
+                session()->set($ses_data);
                 $data = [
                     'title' => 'Login',
                 ];
-                $session->setFlashdata('success', 'Login Success!');
-                return view('templates/header',$data).view('pages/dashboard').view('templates/footer');
+                session()->setFlashdata('success', 'Login Success!');
+                return view('templates/header',$data).view('/pages/dashboard').view('templates/footer');
             }else{
                 $data = [
                     'title' => 'Login',
                 ];
-                $session->setFlashdata('fail', 'Wrong Password');
+                session()->setFlashdata('fail', 'Wrong Password');
                 return view('templates/header',$data).view('/pages/login').view('templates/footer');
 
             }
         }else{
-            $session->setFlashdata('message', 'Email not Found');
+            session()->setFlashdata('message', 'Email not Found');
             $data = [
                 'title' => 'Login',
             ];
@@ -62,7 +61,7 @@ class Login extends BaseController
         $data = [
             'title' => 'Login',
         ];
-        $session->setFlashData('success', 'Logout Success!');
+        session()->setFlashData('success', 'Logout Success!');
         return view('templates/header',$data).view('/pages/login').view('templates/footer');
     }
 } 

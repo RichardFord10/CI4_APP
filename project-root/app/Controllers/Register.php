@@ -39,17 +39,16 @@ class Register extends BaseController
             ];
             $model->save($data);
             $data = [
-                'title' => 'Register',
-                'message' => 'Successfully Register'
-            ];
+                'title' => 'Register'];
+            session()->setFlashdata('success', 'Register Success!');
             return view('templates/header', $data) .
                     view('pages/login') .
                     view('templates/footer');
         }else{
             $data = [
                 'title' => 'Register',
-                'errors' => $this->validator->getErrors()
             ];
+            session()->setFlashdata('error', $this->validator->getErrors());
             return view('templates/header', $data) .
                 view('pages/register') .
                 view('templates/footer');

@@ -56,7 +56,7 @@ class Blog extends BaseController
         }
 
         return view('templates/header', ['title' => 'Create a news item'])
-            . view('blog/create')
+            . view('blog/overview')
             . view('templates/footer');
     }
 }

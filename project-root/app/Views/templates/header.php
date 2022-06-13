@@ -10,21 +10,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link href="<?php echo base_url(); ?>/modules/admin/css/styles.css" rel="stylesheet"></link>
+    <link href="<?php echo base_url(); ?>/modules/admin/css/styles.css" rel="stylesheet">
+    </link>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <!--CHART DATA-->
-    <script type="text/javascript" src="<?php echo base_url();?>/modules/admin/js/chart-area-demo.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>/modules/admin/js/datatables-simple-demo.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>/modules/admin/js/chart-pie-demo.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>/modules/admin/js/chart-bar-demo.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>/modules/admin/js/scripts.js"></script>
+    <script src="<?php echo base_url(); ?>/modules/admin/js/chart-area-demo.js"></script>
+    <script src="<?php echo base_url(); ?>/modules/admin/js/datatables-simple-demo.js"></script>
+    <script src="<?php echo base_url(); ?>/modules/admin/js/chart-pie-demo.js"></script>
+    <script src="<?php echo base_url(); ?>/modules/admin/js/chart-bar-demo.js"></script>
+    <script src="<?php echo base_url(); ?>/modules/admin/js/scripts.js"></script>
     <!--END CHART DATA-->
     <title><?php esc($title); ?></title>
 </head>
+
 <body class="sb-nav-fixed sb-sidenav-toggled">
-    <div container>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
@@ -45,12 +46,15 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
                         <li><a class="dropdown-item" href="/logout">Logout</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
+
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -116,23 +120,24 @@
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:  <strong><?php echo($is_logged_in= TRUE ? session('user_name') : 'Guest'); ?></strong></div>
-                        
+                        <div class="small">Logged in as: <strong><?php echo ($is_logged_in = TRUE ? session('user_name') : 'Guest'); ?></strong></div>
+
                     </div>
                 </nav>
             </div>
-
-        <?php if (session()->getFlashData('success')) { ?>
-            <div class="alert alert-success"> <?php echo(session()->getFlashData('success'));?> 
-        <?php }?> 
-        <?php if (session()->getFlashData('fail')) { ?>
-            <div class="alert alert-danger"> <?php echo(session()->getFlashData('fail')); ?> </div>
-        <?php }?>
-        <?php if (session()->getFlashData('error')) { ?>
-            <div class="alert alert-warning"> <?php echo(session()->getFlashData('error')); ?> </div>
-        <?php }?>
-        <?php if (session()->getFlashData('message')) { ?>
-            <div class="alert alert-warning"> <?php echo(session()->getFlashData('message')); ?> </div>
-        <?php }?>
-            </div>
         </div>
+        <br><br>
+        <?php
+        if (session()->getFlashData('success')) {
+            echo('<div class="alert alert-success" style="margin-bottom:0;"> ' . (session()->getFlashData('success')) . '</div>');
+        }
+        if (session()->getFlashData('error')) {
+            echo('<div class="alert alert-danger" style="margin-bottom:0;"> ' . (session()->getFlashData('error')) . ' </div>');
+        }
+        if (session()->getFlashData('fail')) {
+            echo('<div class="alert alert-warning"> ' . (session()->getFlashData('fail')) . ' </div>');
+        }
+        if (session()->getFlashData('message')) {
+            echo('<div class="alert alert-warning"> ' . (session()->getFlashData('message')) . ' </div>');
+        } ?>
+
