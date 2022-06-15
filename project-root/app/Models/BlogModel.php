@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class BlogModel extends Model
 {
     protected $table = 'blogs';
-    protected $allowedFields = ['title', 'slug', 'body'];
+    protected $allowedFields = ['title', 'body', 'slug'];
 
 
     public function get_blog($slug = null)
