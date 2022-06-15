@@ -1,6 +1,6 @@
 <h2><?= esc($title) ?></h2>
 
-<?php if (! empty($blog) && is_array($blog)): ?>
+<?php if (empty($blog) && is_array($blog)): ?>
 
     <?php foreach ($blog as $b): ?>
 
@@ -9,7 +9,7 @@
         <div class="main">
             <?= esc($blog['body']) ?>
         </div>
-        <p><a href="/blog<?= esc($blog['slug'], 'url') ?>">Viewe</a></p>
+        <p><a href="/blog<?= esc($blog['slug']) ?>">Viewe</a></p>
 
     <?php endforeach ?>
 

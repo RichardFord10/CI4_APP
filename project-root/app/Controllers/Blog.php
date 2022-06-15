@@ -9,9 +9,8 @@ class Blog extends BaseController
     public function index()
     {
         $model = model(BlogModel::class);
-
+        $blog = $model->get_all_blogs();
         $data = [
-            'blog'  => $model->get_blog(),
             'title' => 'Blog Posts',
         ];
 
@@ -52,11 +51,15 @@ class Blog extends BaseController
                 'body'  => $this->request->getPost('body'),
             ]);
 
-            return view('blog/success');
+            session()->setFlashData('success', 'Blog Creation Successful');
+
+            return view('templates/header', ['title' => 'Create Blog'])
+            . view('blog/create')
+            . view('templates/footer');
         }
 
-        return view('templates/header', ['title' => 'Create a news item'])
-            . view('blog/overview')
+        return view('templates/header', ['title' => 'Create Blog'])
+            . view('blog/create')
             . view('templates/footer');
     }
 }

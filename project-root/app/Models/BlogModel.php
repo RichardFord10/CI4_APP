@@ -19,6 +19,12 @@ class BlogModel extends Model
         }
     }
 
+    public function get_all_blogs()
+    {
+        return $this->findAll();
+
+    }
+
 
 
 
