@@ -9,9 +9,11 @@ class Blog extends BaseController
     public function index()
     {
         $model = model(BlogModel::class);
-        $blog = $model->get_all_blogs();
+        // print_r($blogs); exit();
         $data = [
             'title' => 'Blog Posts',
+            'blogs'  => $model->get_all_blogs()
+
         ];
 
         return view('templates/header', $data)

@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class BlogModel extends Model
 {
     protected $table = 'blogs';
-    protected $allowedFields = ['title', 'body', 'slug'];
+    protected $allowedFields = ['id','title', 'slug', 'body'];
 
 
     public function get_blog($slug = null)
@@ -21,7 +21,7 @@ class BlogModel extends Model
 
     public function get_all_blogs()
     {
-        return $this->findAll();
+            return $this->findAll();
 
     }
 

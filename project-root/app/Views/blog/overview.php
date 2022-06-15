@@ -1,19 +1,22 @@
 <h2><?= esc($title) ?></h2>
 
-<?php if (empty($blog) && is_array($blog)): ?>
+<?php if (!empty($blogs) && is_array($blogs)): ?>
 
-    <?php foreach ($blog as $b): ?>
+    <?php foreach ($blogs as $blog): ?>
 
         <h3><?= esc($blog['title']) ?></h3>
 
         <div class="main">
             <?= esc($blog['body']) ?>
         </div>
-        <p><a href="/blog<?= esc($blog['slug']) ?>">Viewe</a></p>
+        <p><a href="/blog/<?= esc($blog['slug'], 'url') ?>">View article</a></p>
 
     <?php endforeach ?>
 
 <?php else: ?>
- <?php //nothing to show ?>
+
+    <h3>No News</h3>
+
+    <p>Unable to find any news for you.</p>
 
 <?php endif ?>
