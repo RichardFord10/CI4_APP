@@ -1,4 +1,7 @@
+<!-- Javascript start -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
+<!-- HTML START -->
 <main>
     <div class="container-fluid px-4">
         <br><Br>
@@ -60,7 +63,7 @@
                         <i class="fas fa-chart-bar me-1"></i>
                         Bar Chart Example
                     </div>
-                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40%"></canvas></div>
                 </div>
             </div>
         </div>

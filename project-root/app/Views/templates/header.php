@@ -15,12 +15,14 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <!--CHART DATA-->
-    <script src="<?php echo base_url(); ?>/modules/admin/js/chart-area-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
+    <!-- CHART DATA-->
+    <!-- <script src="<?php echo base_url(); ?>/modules/admin/js/chart-area-demo.js"></script>
     <script src="<?php echo base_url(); ?>/modules/admin/js/datatables-simple-demo.js"></script>
     <script src="<?php echo base_url(); ?>/modules/admin/js/chart-pie-demo.js"></script>
     <script src="<?php echo base_url(); ?>/modules/admin/js/chart-bar-demo.js"></script>
-    <script src="<?php echo base_url(); ?>/modules/admin/js/scripts.js"></script>
+    <script src="<?php echo base_url(); ?>/modules/admin/js/scripts.js"></script> -->
     <!--END CHART DATA-->
     <title><?php esc($title); ?></title>
 </head>
@@ -73,8 +75,8 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                    <a class="nav-link" href="layout-static">Static Navigation</a>
+                                    <a class="nav-link" href="/pages/layout-sidenav-light">Light Sidenav</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -90,9 +92,9 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
-                                            <a class="nav-link" href="register.html">Register</a>
-                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                            <a class="nav-link" href="login">Login</a>
+                                            <a class="nav-link" href="register">Register</a>
+                                            <a class="nav-link" href="password">Forgot Password</a>
                                         </nav>
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -101,9 +103,9 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="401.html">401 Page</a>
-                                            <a class="nav-link" href="404.html">404 Page</a>
-                                            <a class="nav-link" href="500.html">500 Page</a>
+                                            <a class="nav-link" href="401">401 Page</a>
+                                            <a class="nav-link" href="404">404 Page</a>
+                                            <a class="nav-link" href="500">500 Page</a>
                                         </nav>
                                     </div>
                                 </nav>
@@ -140,4 +142,5 @@
         if (session()->getFlashData('message')) {
             echo('<div class="alert alert-warning"> ' . (session()->getFlashData('message')) . ' </div>');
         } ?>
+        
 
