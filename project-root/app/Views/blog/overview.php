@@ -1,22 +1,29 @@
-<h2><?= esc($title) ?></h2>
+<?php if (!empty($blogs) && is_array($blogs)) : ?>
+    <?php foreach ($blogs as $blog) : ?>
+        <main>
+            <div class="container-fluid px-4">
+                <h3 class="mt-3"><?= esc($blog['title']) ?></h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a href="#">Edit</a></li>
+                    <li class="breadcrumb-item active"><?= esc($blog['title']) ?></li>
+                </ol>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <p class="mb-0">
+                            <?= esc($blog['body']) ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
+        </main>
 
-<?php if (!empty($blogs) && is_array($blogs)): ?>
 
-    <?php foreach ($blogs as $blog): ?>
 
-        <h3><?= esc($blog['title']) ?></h3>
+    <?php else : ?>
 
-        <div class="main">
-            <?= esc($blog['body']) ?>
-        </div>
-        <p><a href="/blog/<?= esc($blog['slug'], 'url') ?>">View article</a></p>
+        <h3>No News</h3>
 
-    <?php endforeach ?>
+        <p>Unable to find any news for you.</p>
 
-<?php else: ?>
-
-    <h3>No News</h3>
-
-    <p>Unable to find any news for you.</p>
-
-<?php endif ?>
+    <?php endif ?>

@@ -1,5 +1,4 @@
 
-
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Charts</h1>
@@ -9,9 +8,8 @@
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
+                                Experience building charts and graphs with the Chart.js library.
                                 <a target="_blank" href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a>
-                                .
                             </div>
                         </div>
                         <div class="card mb-4">
