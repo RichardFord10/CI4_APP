@@ -5,12 +5,15 @@
 } ?>
 
 <head>
+    <title><?php esc($title); ?></title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link href="<?php echo base_url(); ?>/modules/admin/css/styles.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/modules/admin/css/homestyles.css" rel="stylesheet">
+
     </link>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -18,16 +21,21 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
    
     <!-- CHART DATA-->
-    <script src="<?php echo base_url(); ?>/modules/admin/js/chart-area-demo.js"></script>
-    <script src="<?php echo base_url(); ?>/modules/admin/js/datatables-simple-demo.js"></script>
+     <script src="<?php echo base_url(); ?>/modules/admin/js/datatables-simple-demo.js"></script>
     <script src="<?php echo base_url(); ?>/modules/admin/js/chart-pie-demo.js"></script>
     <script src="<?php echo base_url(); ?>/modules/admin/js/chart-bar-demo.js"></script>
     <script src="<?php echo base_url(); ?>/modules/admin/js/scripts.js"></script>
+    <script src="<?php echo base_url(); ?>/modules/admin/js/homescripts.js"></script>
+
     <!--END CHART DATA-->
-    <title><?php esc($title); ?></title>
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="sb-nav-fixed sb-sidenav-toggled">
+<body class="sb-nav-fixed sb-sidenav">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
@@ -125,23 +133,25 @@
                         <div class="small">Logged in as: <strong><?php echo ($is_logged_in = TRUE ? session('user_name') : 'Guest'); ?></strong></div>
                     </div>
                 </nav>
-                <br>
             </div>
-            <br>
         </div>
-        <br><br>
+        <br>
         <?php
         if (session()->getFlashData('success')) {
             echo('<div class="alert alert-success" style="margin-bottom:0;"> ' . (session()->getFlashData('success')) . '</div>');
+            unset($_SESSION['success']);
         }
         if (session()->getFlashData('error')) {
             echo('<div class="alert alert-danger" style="margin-bottom:0;"> ' . (session()->getFlashData('error')) . ' </div>');
+            unset($_SESSION['error']);
         }
         if (session()->getFlashData('fail')) {
             echo('<div class="alert alert-warning"> ' . (session()->getFlashData('fail')) . ' </div>');
+            unset($_SESSION['fail']);
         }
         if (session()->getFlashData('message')) {
             echo('<div class="alert alert-warning"> ' . (session()->getFlashData('message')) . ' </div>');
+            unset($_SESSION['message']);
         } ?>
         
 

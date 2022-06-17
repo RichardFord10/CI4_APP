@@ -48,6 +48,8 @@ $routes->get('/', 'Home::index');
 $routes->get('page/dashboard', 'Dashboard::index',['filter' => 'auth']);
 $routes->get('pages/login', 'Login::index');
 $routes->match(['get','post'], 'login/auth', 'Login::auth');
+$routes->get('pages/Home', 'Home::index');
+
 
 /*
  * --------------------------------------------------------------------
