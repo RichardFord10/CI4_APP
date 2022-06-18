@@ -7,15 +7,15 @@ use CodeIgniter\Model;
 class BlogModel extends Model
 {
     protected $table = 'blogs';
-    protected $allowedFields = ['id','title', 'slug', 'body'];
+    protected $allowedFields = ['id','title', 'slug', 'body', 'author'];
 
 
-    public function get_blog($slug = null)
+    public function get_blog_by_id($id = null)
     {
-        if ($slug === false) {
-            return $this->findAll();
+        if ($id === false) {
+            $this->session->setFlashData('error', 'No blog found');
         }else{
-            return $this->where(['slug' => $slug])->first();
+            return $this->where(['id' => $id])->first();
         }
     }
 
