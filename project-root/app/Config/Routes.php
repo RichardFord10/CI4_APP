@@ -18,7 +18,7 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  */
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
-$routes->setDefaultMethod('index');
+$routes->setDefaultMethod('');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
@@ -35,23 +35,30 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->match(['get', 'post'], 'blog/create', 'Blog::create');
-$routes->match(['get', 'post'], 'blog/edit', 'Blog::edit');
 
-// $routes->get('blog', 'Blog::view/$1');
-$routes->get('pages/login', 'Login::index');
+//blog routes
+$routes->match(['get', 'post'], 'blog/create', 'Blog::create');
+$routes->match(['get', 'post'], 'blog/edit/', 'Blog::edit');
+$routes->match(['get'], 'blog/delete', 'Blog::delete');
 $routes->get('blog', 'Blog::index');
-$routes->get('pages/register', 'Register::index');
-$routes->match(['get','post'], 'register/save', 'Register::save');
-$routes->get('/', 'Home::index');
-$routes->get('pages', 'Pages::index');
+$routes->get('blog/view', 'Blog::view');
+
+//pages routes
 $routes->get('(:any)', 'Pages::view/$1');
-$routes->get('/', 'Home::index');
+$routes->get('pages/login', 'Login::index');
+$routes->get('pages/register', 'Register::index');
+$routes->get('pages', 'Pages::index');
 $routes->get('page/dashboard', 'Dashboard::index',['filter' => 'auth']);
 $routes->get('pages/login', 'Login::index');
-$routes->match(['get','post'], 'login/auth', 'Login::auth');
 $routes->get('pages/home', 'Home::index');
+
+//Home routes
+$routes->get('/', 'Home::index');
 $routes->get('about', 'Home::index');
+
+//login/register routes
+$routes->match(['get','post'], 'register/save', 'Register::save');
+$routes->match(['get','post'], 'login/auth', 'Login::auth');
 
 
 /*

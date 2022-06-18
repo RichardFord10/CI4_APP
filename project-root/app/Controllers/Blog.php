@@ -72,22 +72,36 @@ class Blog extends BaseController
         $id = $this->request->getVar('id');
         $blog = $model->get_blog_by_id($id);
 
-        return view('templates/header', ['title' => 'Edit Blog'])
-        . view('blog/edit', ['blog' => $blog])
-        . view('templates/footer');
+            
+            if($this->request->getMethod() === 'post'){
+                $model->update($id, [
+                    'title' => $this->request->getPost('title'),
+                    'slug'  => url_title($this->request->getPost('title'), '-', true),
+                    'body'  => $this->request->getPost('body'),
+                    'author' => session('user_name')
+                ]);
 
-        if($this->request->getPost('submit')){
-            $model->update($id, [
-                'title' => $this->request->getVar('title'),
-                'slug'  => url_title($this->request->getVar('title'), '-', true),
-                'body'  => $this->request->getVar('body'),
-                'author' => session('user_name')
-            ]);
-            session()->setFlashData('success', 'Blog Update Successful');
-            return view('templates/header', ['title' => 'Create Blog'])
-            . view('blog/overview')
+                session()->setFlashData('success', 'Blog Update Successful');
+                return view('templates/header', ['title' => 'Overview'])
+                . view('blog/overview', $model->get_all_blogs())
+                . view('templates/footer');
+            }
+            
+
+            return view('templates/header', ['title' => 'Edit Blog'])
+            . view('blog/edit', ['blog' => $blog])
             . view('templates/footer');
-        }
+    
+    }
+
+    public function delete(){
+        $model = model(BlogModel::class);
+        $id = $this->request->getVar('id');
+        $model->delete($id);
+        session()->setFlashData('success', 'Blog Deletion Successful');
+        return view('templates/header', ['title' => 'Overview'])
+        . view('blog/overview', $model->get_all_blogs())
+        . view('templates/footer');
     }
 }
 
