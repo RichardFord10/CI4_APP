@@ -57,7 +57,7 @@ class Blog extends BaseController
             session()->setFlashData('success', 'Blog Creation Successful');
 
             return view('templates/header', ['title' => 'Create Blog'])
-            . view('blog/create')
+            . view('blog/overview', ['blogs' => $model->get_all_blogs()])
             . view('templates/footer');
         }
 
@@ -97,11 +97,11 @@ class Blog extends BaseController
     public function delete(){
         $model = model(BlogModel::class);
         $id = $this->request->getVar('id');
-        $model->delete($id);
+        $model->delete(['id' => $id]);
         session()->setFlashData('success', 'Blog Deletion Successful');
         return view('templates/header', ['title' => 'Overview'])
-        . view('blog/overview', $model->get_all_blogs())
+        . view('blog/overview', ['blogs' => $model->get_all_blogs()])
         . view('templates/footer');
-    }
+        }
 }
 

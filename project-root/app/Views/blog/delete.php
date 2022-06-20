@@ -1,5 +1,4 @@
-<form action="/blog/edit?id=<?php echo($_GET['id'])?>" method="post">
-    <?= csrf_field() ?>
+<form action="" method="get">
    
     <main>
         <div class="container">
@@ -7,7 +6,7 @@
                 <div class="col-lg-5">
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                         <div class="card-header">
-                            <h3 class="text-center font-weight-light my-4">Edit Post</h3>
+                            <h3 class="text-center font-weight-light my-4">Delete Post</h3>
 
                         </div>
                         <div class="card-body">
@@ -32,6 +31,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center"><a href="/blog/delete?id=<?php echo $blog['id'];?>" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a></div>
+        <div class="text-center"><a href="/blog/delete?id=<?php echo $blog['id'];?>"><button class="btn btn-danger btn-sm" name="delete"><i class="fa fa-trash" aria-hidden="true"></i></button></a></div>
+
     </main>
     </div>
