@@ -1,6 +1,8 @@
+<main>
+<br>
+<div class="text-center"><a href="/blog/create" class="btn btn-success btn-sm">Create New</a></div>
 <?php if (!empty($blogs) && is_array($blogs)) : ?>
     <?php foreach ($blogs as $blog) : ?>
-        <main>
             <div class="container-fluid px-4">
                 <h3 class="mt-3"><?= esc($blog['title']) ?></h3>
                 <ol class="breadcrumb mb-4">

@@ -73,7 +73,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="dashboard">
+                            <a class="nav-link" href="/dashboard">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -121,11 +121,11 @@
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
+                            <a class="nav-link" href="/charts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
                             </a>
-                            <a class="nav-link" href="tables.html">
+                            <a class="nav-link" href="/tables">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
                             </a>
@@ -138,6 +138,8 @@
             </div>
         </div>
         <br>
+        <br>
+        <div class="alerts">
         <?php
         if (session()->getFlashData('success')) {
             echo('<div class="alert alert-success" style="margin-bottom:0;"> ' . (session()->getFlashData('success')) . '</div>');
@@ -158,5 +160,6 @@
         else if (!empty($data['msg'])) {
             echo('<div class="alert alert-success"> ' . $data['msg'] . ' </div>');
         } ?>
+        </div>
         
 
