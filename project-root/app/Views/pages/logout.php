@@ -1,9 +1,10 @@
 <?php $data = [
     'title' => 'Logout',
-    'success' => 'Logout Success!'
+    'msg' => 'Logout Success!'
 ];
-session_destroy();
 return view('templates/header',$data).view('/pages/login').view('templates/footer');
+$this->session->setFlashData('success', 'Logout Successful');
+$this->session->destroy();
 
 
 

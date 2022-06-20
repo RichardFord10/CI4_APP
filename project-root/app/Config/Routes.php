@@ -39,7 +39,7 @@ $routes->set404Override();
 //blog routes
 $routes->match(['get', 'post'], 'blog/create', 'Blog::create');
 $routes->match(['get', 'post'], 'blog/edit', 'Blog::edit');
-$routes->match(['get', 'post'], 'blog/delete/', 'Blog::delete');
+$routes->match(['get', 'post'], 'blog/delete', 'Blog::delete');
 $routes->get('blog', 'Blog::index');
 $routes->get('blog/view', 'Blog::view');
 
@@ -59,6 +59,8 @@ $routes->get('about', 'Home::index');
 //login/register routes
 $routes->match(['get','post'], 'register/save', 'Register::save');
 $routes->match(['get','post'], 'login/auth', 'Login::auth');
+
+
 
 
 /*

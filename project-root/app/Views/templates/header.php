@@ -143,17 +143,20 @@
             echo('<div class="alert alert-success" style="margin-bottom:0;"> ' . (session()->getFlashData('success')) . '</div>');
             unset($_SESSION['success']);
         }
-        if (session()->getFlashData('error')) {
+        else if (session()->getFlashData('error')) {
             echo('<div class="alert alert-danger" style="margin-bottom:0;"> ' . (session()->getFlashData('error')) . ' </div>');
             unset($_SESSION['error']);
         }
-        if (session()->getFlashData('fail')) {
+        else if (session()->getFlashData('fail')) {
             echo('<div class="alert alert-warning"> ' . (session()->getFlashData('fail')) . ' </div>');
             unset($_SESSION['fail']);
         }
-        if (session()->getFlashData('message')) {
+        else if (session()->getFlashData('message')) {
             echo('<div class="alert alert-warning"> ' . (session()->getFlashData('message')) . ' </div>');
             unset($_SESSION['message']);
+        }
+        else if (!empty($data['msg'])) {
+            echo('<div class="alert alert-success"> ' . $data['msg'] . ' </div>');
         } ?>
         
 
