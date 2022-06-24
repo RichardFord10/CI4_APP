@@ -43,9 +43,17 @@
                         </div>
                         <div class="flex-shrink-0"><span class="text-primary">December 2015 - February 2022</span></div>
                     </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Inbound Laborer</h3>
+                            <div class="subheading mb-3">Amazon.com</div>
+                            <p>Unload trucks and process new inventory items for amazon.com</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">June 2010 - February 2014</span></div>
+                    </div>
                 </div>
             </section>
-            <hr class="m-0" />
+            <hr/>
             <!-- Education-->
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
