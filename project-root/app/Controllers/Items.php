@@ -1,45 +1,43 @@
 <?php
-
 namespace App\Controllers;
+use App\Models\ItemsModel;
 
-use App\Models\NewsModel;
-
-class items extends BaseController
+class Items extends BaseController
 {
     public function index()
     {
-        $model = model(ItemModel::class);
+        $model = model(ItemsModel::class);
         // print_r($items); exit();
         $data = [
-            'title' => 'Dashboard',
+            'title' => 'Items',
             'items'  => $model->get_all_items()
 
         ];
 
         return view('templates/header', $data)
-            . view('dashboard')
+            . view('items/overview')
             . view('templates/footer');
     }
 
-    public function view($slug = null)
-    {
-        $model = model(itemsModel::class);
+    // public function view($slug = null)
+    // {
+    //     $model = model(itemsModel::class);
 
-        if (empty($data['title'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the items post you requested.');
+    //     if (empty($data['title'])) {
+    //         throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the items post you requested.');
 
-        }
+    //     }
 
-        $data['name'] = $data['items']['name'];
+    //     $data['name'] = $data['items']['name'];
 
-        return view('templates/header', $data)
-            . view('items/view')
-            . view('templates/footer');
-    }
+    //     return view('templates/header', $data)
+    //         . view('items/view')
+    //         . view('templates/footer');
+    // }
 
     public function create()
     {
-        $model = model(itemsModel::class);
+        $model = model(ItemsModel::class);
 
         if ($this->request->getMethod() === 'post' && $this->validate([
             'name' => 'required|min_length[3]|max_length[255]',
@@ -70,7 +68,7 @@ class items extends BaseController
         }
 
         return view('templates/header', ['title' => 'Create items'])
-            . view('items/create')
+            . view('items/create', ['colors' => $model->get_distinct('color')])
             . view('templates/footer');
     }
 
@@ -107,7 +105,7 @@ class items extends BaseController
     }
 
     public function delete(){
-        $model = model(itemsModel::class);
+        $model = model(ItemsModel::class);
         $id = $this->request->getVar('id');
         $model->delete(['id' => $id]);
         session()->setFlashData('success', 'items Deletion Successful');

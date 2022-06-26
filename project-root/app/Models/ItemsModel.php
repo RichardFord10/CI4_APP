@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ItemModel extends Model
+class ItemsModel extends Model
 {
     protected $table = 'items';
     protected $allowedFields = ["id","name","qty","cost","price","color","category","brand","images"];
@@ -24,7 +24,17 @@ class ItemModel extends Model
 
     }
 
+    public function get_distinct($column)
+    {
+        $db  = \Config\Database::connect();
+     $query = $db->query('SELECT distinct '.$column . ' from items', false);
+     return $query->getResultArray();
 
+     
+
+
+       
+    }
 
 
 }

@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\NewsModel;
 
 class Blog extends BaseController
 {
