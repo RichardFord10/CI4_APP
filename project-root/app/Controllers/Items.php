@@ -39,14 +39,7 @@ class Items extends BaseController
     {
         $model = model(ItemsModel::class);
 
-        if ($this->request->getMethod() === 'post' && $this->validate([
-            'name' => 'required|min_length[3]|max_length[255]',
-            'qty' => 'required|integer',"price","color","category","brand",
-            'cost' => 'required|integer',
-            "price" => 'required|integer',
-            "color" => 'required|integer',
-            "category" => 'required',
-        ])) {
+        if ($this->request->getMethod() === 'post') {
             $model->save([
                 'name' => $this->request->getPost('name'),
                 'qty'  => $this->request->getPost('qty'),
@@ -68,17 +61,20 @@ class Items extends BaseController
         }
 
         return view('templates/header', ['title' => 'Create items'])
-            . view('items/create', ['colors' => $model->get_distinct('color')])
+            . view('items/create', ['colors' => $model->get_distinct('color'), 'category'=>$model->get_distinct('category')])
             . view('templates/footer');
     }
 
     public function edit()
     {
-        $model = model(itemsModel::class);
+        $model = model(ItemsModel::class);
         $id = $this->request->getVar('id');
-        $items = $model->get_items_by_id($id);
+        $item = $model->get_item_by_id($id);
 
-            
+        return view('templates/header', ['title' => 'Edit items'])
+            . view('items/edit', ['item' => $item])
+            . view('templates/footer');
+
             if($this->request->getMethod() === 'post'){
                 $model->update($id, [
                     'name' => $this->request->getPost('name'),
@@ -91,18 +87,16 @@ class Items extends BaseController
                     'images' => $this->request->getPost('image'),
                 ]);
 
-                session()->setFlashData('success', 'items Update Successful');
+                session()->setFlashData('success', 'Item Edit Success');
                 return view('templates/header', ['title' => 'Overview'])
                 . view('items/overview', $model->get_all_items())
                 . view('templates/footer');
             }
             
 
-            return view('templates/header', ['title' => 'Edit items'])
-            . view('items/edit', ['items' => $items])
-            . view('templates/footer');
+            
     
-    }
+}
 
     public function delete(){
         $model = model(ItemsModel::class);

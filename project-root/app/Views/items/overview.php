@@ -1,10 +1,10 @@
 <main>
-    <br>
+<hr>
     <div class="text-center"><a href="create" class="btn btn-success btn-sm">Create New</a></div>
-    <br>
+<hr>
     <?php if (!empty($items) && is_array($items)) : ?>
         <div class="container-fluid px-4">
-            <table id="myTable">
+            <table id="myTable" class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -12,7 +12,10 @@
                         <th>Qty</th>
                         <th>Cost</th>
                         <th>Price</th>
+                        <th>Color</th>
                         <th>Category</th>
+                        <th>Edit </th>
+                        <th>Delete </th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -22,7 +25,10 @@
                         <th>Qty</th>
                         <th>Cost</th>
                         <th>Price</th>
+                        <th>Color</th>
                         <th>Category</th>
+                        <th>Edit </th>
+                        <th>Delete </th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -32,19 +38,29 @@
                                 <?php echo ($item['id']); ?>
                             </td>
                             <td>
-                                <?php echo ($item['name']); ?>
+                                <?php echo (ucfirst($item['name'])); ?>
                             </td>
                             <td>
                                 <?php echo ($item['qty']); ?>
                             </td>
                             <td>
-                                <?php echo ($item['cost']); ?>
+                                <?php echo ("$".$item['cost']/100); ?>
                             </td>
                             <td>
-                                <?php echo ($item['price']); ?>
+                                <?php echo ("$".$item['price']/100); ?>
                             </td>
                             <td>
-                                <?php echo ($item['category']); ?>
+                                <?php echo (!empty($item['color'])) ?  ucfirst($item['color']) : $item['color'] ; ?>
+                            </td>
+                            <td>
+                                <?php echo (ucfirst($item['category'])); ?>
+                            </td>
+                            <td>
+                                <a class="text-center" href="/items/edit?id=<?php echo($item['id']);?>"><i class="fas fa-edit"></i></a>
+                            </td>
+                            <td>
+                                <a class="text-center" href="/items/delete?id=<?php echo($item['id']);?>"><i style="color:red;" class="fas fa-trash"></i></a>
+
                             </td>
                         </tr>
                     <?php endforeach ?>

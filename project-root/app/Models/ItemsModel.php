@@ -7,14 +7,15 @@ use CodeIgniter\Model;
 class ItemsModel extends Model
 {
     protected $table = 'items';
-    protected $allowedFields = ["id","name","qty","cost","price","color","category","brand","images"];
+    protected $allowedFields = ["id","name","qty","cost","price","color","category","brand","images", "location_one", "location_two"];
 
     public function get_item_by_id($id = null)
     {
         if ($id === false) {
             $this->session->setFlashData('error', 'No item found');
         }else{
-            return $this->where(['id' => $id])->first();
+            $item = $this->where(['id' => $id])->first();
+            return $item;
         }
     }
 
@@ -27,13 +28,9 @@ class ItemsModel extends Model
     public function get_distinct($column)
     {
         $db  = \Config\Database::connect();
-     $query = $db->query('SELECT distinct '.$column . ' from items', false);
-     return $query->getResultArray();
+        $query = $db->query('SELECT distinct '.$column . ' from items', false);
+        return $query->getResultArray();
 
-     
-
-
-       
     }
 
 
