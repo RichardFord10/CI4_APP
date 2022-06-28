@@ -1,5 +1,5 @@
-<form action="/items/edit?id=<?php echo($_GET['id'])?>" method="post">
-    <?= csrf_field() ?>
+<form action="/items/edit?id=<?php echo($_GET['id']);?>" method="post">
+<?= csrf_field() ?>
     <div class="container">
         <br><a href="/items"><i class="fas fa-chevron-left"></i> Back</a>
         <div class="row justify-content-center">
@@ -12,7 +12,7 @@
                         <div class="form-floating mb-3">
                             <div class="row">
                                 <div class="col">
-                                    <input type="text" placeholder="<?php echo($item['name']);?>" class="form-control" name="name" value="">
+                                    <input type="text" placeholder="<?php echo ($item['name']);?>" class="form-control" name="name" value=""/>
                                 </div>
                             </div>
                             <hr>
@@ -22,7 +22,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">QTY</label>
                                         </div>
-                                        <input type="text" value="" name="qty" placeholder="<?php echo($item['qty']);?>" id="inputGroupSelect02" class="form-control">
+                                        <input type="text" value="" name="qty" placeholder="<?php echo($item['qty']);?>" id="inputGroupSelect02" class="form-control"/>
 
                                     </div>
                                 </div>
@@ -31,7 +31,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect02">$</label>
                                         </div>
-                                        <input type="text" value="" name="cost" placeholder="<?php echo($item['cost']/100);?>" id="inputGroupSelect02" class="form-control">
+                                        <input type="text" value="" name="cost" placeholder="<?php echo($item['cost']/100);?>" id="inputGroupSelect02" class="form-control"/>
                                     </div>
                                 </div>
 
@@ -40,7 +40,7 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect02">$</label>
                                         </div>
-                                        <input type="text" value="" name="price" value="" placeholder="<?php echo($item['price']/100);?>" id="inputGroupSelect02" class="form-control">
+                                        <input type="text" value="" name="price" value="" placeholder="<?php echo($item['price']/100);?>" id="inputGroupSelect02" class="form-control"/>
                                     </div>
                                 </div>
 
@@ -52,9 +52,12 @@
                                                 <label class="input-group-text" for="inputGroupSelect04">Category</label>
                                             </div>
                                             <select class="custom-select form-control" name="category" id="inputGroupSelect04">
-                                                    <?php if (isset($item['category']) && $item['category'] != NULL) { ?>
-                                                        <option selected value="<?php echo ucfirst($item['category']) ?>"></option>
+                                                <option selected value="#">Choose a Category</option>
+                                                <?php foreach ($category as $cat) : ?>
+                                                    <?php if (isset($cat['category']) && $cat['category'] != NULL) { ?>
+                                                        <option value="<?php echo ($cat['category']) ?>"><?php echo ($cat['category']) ?><input type="hidden" name="category" value="<?php echo ($cat['category'])?>"/> </option>
                                                     <?php } ?>
+                                                <?php endforeach ?>
                                             </select>
                                         </div>
                                     </div>
@@ -78,10 +81,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                <hr>
                                 <div class="row">
                                     <div class="col">
                                         <div class="input-group mb-3">
-                                            <input type="file" id="inputGroupSelet06" accept="image/*" />
+                                            <input type="file" name = "image" id="inputGroupSelet06" accept="image/*" />
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +95,7 @@
                         </div>
                         <!--card body-->
                     </div>
-                    <button class="btn btn-primary mx-auto d-block" name="submit" type="submit">Submit</a>
+                    <button class="btn btn-primary mx-auto d-block form control" name="submit" type="submit">Submit</a>
                 </div>
                 <div class="card-footer text-center py-3"></div>
             </div>

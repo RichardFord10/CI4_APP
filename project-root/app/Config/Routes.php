@@ -17,8 +17,8 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
-$routes->setDefaultMethod('');
+// $routes->setDefaultController('Home');
+// $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
@@ -46,7 +46,6 @@ $routes->match(['get', 'post'], 'items/edit', 'Items::edit');
 $routes->match(['get', 'post'], 'items/delete', 'Items::delete');
 $routes->get('items', 'Items::index');
 $routes->get('items/view', 'Items::view');
-$routes->get('items/create', 'Items::get_by_distinct');
 
 
 //blog routes
