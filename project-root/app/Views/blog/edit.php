@@ -1,6 +1,5 @@
 <form action="/blog/edit?id=<?php echo($_GET['id'])?>" method="post">
     <?= csrf_field() ?>
-   
     <main>
         <div class="container">
             <div class="row justify-content-center">

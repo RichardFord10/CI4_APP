@@ -21,14 +21,8 @@
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">QTY</label>
                                         </div>
+                                        <input type="text" placeholder="Qty" name="qty" id="inputGroupSelect01" class="form-control">
 
-                                        <select class="custom-select form-control" name="qty" id="inputGroupSelect01">
-                                            <option selected value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -95,16 +89,11 @@
                                                 <option value="2">Black</option>
                                                 <option value="3">Red</option>
                                                 <option value="2">Purple</option>
-                                                <option value="3">5</option>
-                                                <option value="2">6</option>
-                                                <option value="3">7</option>
-                                                <option value="2">8</option>
-                                                <option value="3">9</option>
-                                                <option value="3">10</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
+                                <hr>
                                 <div class="row">
                                     <div class="col">
                                         <div class="input-group mb-3">
@@ -112,12 +101,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-
-
                             </div>
                             <!--form floating-->
                         </div>

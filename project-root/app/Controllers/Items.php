@@ -53,7 +53,7 @@ class Items extends BaseController
                 
             ]);
 
-            session()->setFlashData('success', 'items Creation Successful');
+            session()->setFlashData('success', 'Item Creation Success!');
 
             return view('templates/header', ['title' => 'Create items'])
             . view('items/overview', ['items' => $model->get_all_items()])
@@ -70,39 +70,37 @@ class Items extends BaseController
         $model = model(ItemsModel::class);
         $id = $this->request->getVar('id');
         $item = $model->get_item_by_id($id);
+        $category = $model->get_distinct('category');
+
+
+        if($this->request->getMethod() === 'post'){
+            $model->update($id, [
+                'name' => $this->request->getPost('name'),
+                'qty'  => $this->request->getPost('qty'),
+                'cost'  => $this->request->getPost('cost'),
+                'price'  => $this->request->getPost('price'),
+                'color'  => $this->request->getPost('color'),
+                'category' => $this->request->getPost('category'),
+                'brand' => $this->request->getPost('brand'),
+                'images' => $this->request->getPost('image'),
+            ]);
+
+            session()->setFlashData('success', 'Item Edit Success!');
+            return view('templates/header', ['title' => 'Overview'])
+            . view('items/overview', ['items' => $model->get_all_items()])
+            . view('templates/footer');
+        }
 
         return view('templates/header', ['title' => 'Edit items'])
-            . view('items/edit', ['item' => $item])
-            . view('templates/footer');
-
-            if($this->request->getMethod() === 'post'){
-                $model->update($id, [
-                    'name' => $this->request->getPost('name'),
-                    'qty'  => $this->request->getPost('qty'),
-                    'cost'  => $this->request->getPost('cost'),
-                    'price'  => $this->request->getPost('price'),
-                    'color'  => $this->request->getPost('color'),
-                    'category' => $this->request->getPost('category'),
-                    'brand' => $this->request->getPost('brand'),
-                    'images' => $this->request->getPost('image'),
-                ]);
-
-                session()->setFlashData('success', 'Item Edit Success');
-                return view('templates/header', ['title' => 'Overview'])
-                . view('items/overview', $model->get_all_items())
-                . view('templates/footer');
-            }
-            
-
-            
-    
-}
+        . view('items/edit', ['item' => $item, 'category' => $category])
+        . view('templates/footer');
+    }
 
     public function delete(){
         $model = model(ItemsModel::class);
         $id = $this->request->getVar('id');
         $model->delete(['id' => $id]);
-        session()->setFlashData('success', 'items Deletion Successful');
+        session()->setFlashData('success', 'Item Delete Success!');
         return view('templates/header', ['title' => 'Overview'])
         . view('items/overview', ['items' => $model->get_all_items()])
         . view('templates/footer');
