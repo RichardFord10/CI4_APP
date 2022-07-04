@@ -1,16 +1,24 @@
-<?php namespace App\Controllers;
-  
+<?php 
+
+namespace App\Controllers;
+
 use CodeIgniter\Controller;
+use App\Models\ItemsModel;
   
 class Dashboard extends Controller
 {
     public function index()
     {
-        $session = session();
-        session()->setFlashData('message', 'Welcome back, ' . $session->get('username'));
+        $items_model = new ItemsModel();
+        $items = $items_model->get_all_items();
+        
         $data = [
             'title' => 'Dashboard',
+            'items' => $items
         ];
-        return view('templates/header', $data).view('pages/dashboard').view('templates/footer');
+
+        return view('templates/header', $data)
+        .view('pages/dashboard')
+        .view('templates/footer');
     }
 }

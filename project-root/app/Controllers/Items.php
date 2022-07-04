@@ -19,21 +19,21 @@ class Items extends BaseController
             . view('templates/footer');
     }
 
-    // public function view($slug = null)
-    // {
-    //     $model = model(itemsModel::class);
+    public function view($id = null)
+    {
+        $model = model(itemsModel::class);
 
-    //     if (empty($data['title'])) {
-    //         throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the items post you requested.');
+        if (empty($data['id'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Cannot find the items post you requested.');
 
-    //     }
+        }
 
-    //     $data['name'] = $data['items']['name'];
+        $data['name'] = $data['items']['name'];
 
-    //     return view('templates/header', $data)
-    //         . view('items/view')
-    //         . view('templates/footer');
-    // }
+        return view('templates/header', $data)
+            . view('items/view')
+            . view('templates/footer');
+    }
 
     public function create()
     {
@@ -50,7 +50,6 @@ class Items extends BaseController
                 'brand' => $this->request->getPost('brand'),
                 'images' => $this->request->getPost('image'),
 
-                
             ]);
 
             session()->setFlashData('success', 'Item Creation Success!');

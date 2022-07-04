@@ -36,6 +36,10 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
+//Dashboard Routes
+$routes->get('dashboard', 'Dashboard::index');
+
+
 //Home routes
 $routes->get('/', 'Home::index');
 $routes->get('about', 'Home::index');
@@ -60,7 +64,7 @@ $routes->get('(:any)', 'Pages::view/$1');
 $routes->get('pages/login', 'Login::index');
 $routes->get('pages/register', 'Register::index');
 $routes->get('pages', 'Pages::index');
-$routes->get('page/dashboard', 'Dashboard::index',['filter' => 'auth']);
+$routes->get('pages/dashboard', 'Dashboard::index',['filter' => 'auth']);
 $routes->get('pages/login', 'Login::index');
 $routes->get('pages/home', 'Home::index');
 
@@ -68,6 +72,8 @@ $routes->get('pages/home', 'Home::index');
 //login/register routes
 $routes->match(['get','post'], 'register/save', 'Register::save');
 $routes->match(['get','post'], 'login/auth', 'Login::auth');
+
+
 
 
 

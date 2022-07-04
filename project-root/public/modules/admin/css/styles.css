@@ -575,10 +575,10 @@ progress {
   margin-right: 0.5rem;
 }
 
-.initialism {
+/* .initialism {
   font-size: 0.875em;
   text-transform: uppercase;
-}
+} */
 
 .blockquote {
   margin-bottom: 1rem;
@@ -7708,7 +7708,7 @@ textarea.form-control-lg {
 }
 
 .text-uppercase {
-  text-transform: uppercase !important;
+  /* text-transform: uppercase !important; */
 }
 
 .text-capitalize {
@@ -11451,7 +11451,7 @@ body {
   padding: 1.75rem 1rem 0.75rem;
   font-size: 0.75rem;
   font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 .sb-sidenav .sb-sidenav-menu .nav .nav-link {
   display: flex;
