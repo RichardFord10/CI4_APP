@@ -14,7 +14,8 @@ class Dashboard extends Controller
         
         $data = [
             'title' => 'Dashboard',
-            'items' => $items
+            'items' => $items, 
+            'items_json' => \json_encode($items)
         ];
 
         return view('templates/header', $data)

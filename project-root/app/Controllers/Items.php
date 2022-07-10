@@ -11,9 +11,7 @@ class Items extends BaseController
         $data = [
             'title' => 'Items',
             'items'  => $model->get_all_items()
-
         ];
-
         return view('templates/header', $data)
             . view('items/overview')
             . view('templates/footer');
@@ -103,6 +101,15 @@ class Items extends BaseController
         return view('templates/header', ['title' => 'Overview'])
         . view('items/overview', ['items' => $model->get_all_items()])
         . view('templates/footer');
-        }
+    }
+
+    public function get_dashboard_ajax(){
+        $model = model(ItemsModel::class);
+        $data = [ 'items' => $model->get_all_items()];
+        return json_encode($data);
+    }
+
 }
+
+
 

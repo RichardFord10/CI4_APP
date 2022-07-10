@@ -1,7 +1,7 @@
+<script type="text/javascript">
+const items_json = <?php echo $items_json;?>;
+</script>
 
-
-<!-- Javascript start -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 
 <!-- HTML START -->
 <main>
@@ -56,7 +56,9 @@
                         <i class="fas fa-chart-area me-1"></i>
                         Area Chart Example
                     </div>
-                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                    <div class="card-body">
+
+                    </div>
                 </div>
             </div>
             <div class="col-xl-6">
@@ -65,7 +67,10 @@
                         <i class="fas fa-chart-bar me-1"></i>
                         Bar Chart Example
                     </div>
-                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40%"></canvas></div>
+                    <div class="card-body" id="chart-container">
+                        <canvas id="colors-chart">
+                        </canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,3 +149,5 @@
         </div>
     </div>
 </main>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>/modules/admin/js/AJAX/app.js"></script>

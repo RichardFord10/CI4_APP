@@ -38,13 +38,21 @@ $routes->set404Override();
 
 //Dashboard Routes
 $routes->get('dashboard', 'Dashboard::index');
+$routes->match(['get', 'post'], 'dashboard', 'Dashboard::index');
+
 
 
 //Home routes
 $routes->get('/', 'Home::index');
 $routes->get('about', 'Home::index');
 
+//Charts Routes
+$routes->get('/dashboard', 'Charts::bar_chart_js');
+
+
+
 //item routes
+$routes->get('items/ajax', 'Items::get_all_ajax');
 $routes->match(['get', 'post'], 'items/create', 'Items::create');
 $routes->match(['get', 'post'], 'items/edit', 'Items::edit');
 $routes->match(['get', 'post'], 'items/delete', 'Items::delete');

@@ -24,8 +24,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- CHART DATA-->
      <script src="<?php echo base_url(); ?>/modules/admin/js/datatables-simple-demo.js"></script>
-    <script src="<?php echo base_url(); ?>/modules/admin/js/chart-pie-demo.js"></script>
-    <script src="<?php echo base_url(); ?>/modules/admin/js/chart-bar-demo.js"></script>
     <script src="<?php echo base_url(); ?>/modules/admin/js/scripts.js"></script>
     <script src="<?php echo base_url(); ?>/modules/admin/js/homescripts.js"></script>
 
