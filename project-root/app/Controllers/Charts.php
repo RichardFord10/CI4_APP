@@ -1,37 +1,39 @@
 <?php
- 
-class Chart extends CI_Controller {
-    
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function __construct() {
-        parent::__construct();
-        $this->load->database();
-        $this->load->helper(array('url','html','form'));
-    }       
 
-    /**
+namespace App\Controllers;
+use CodeIgniter\Controller;
+
+
+class Charts extends Controller {
+       /**
      * Write code on Method
      *
      * @return response()
      */
-    public function bar_chart_js() {
-   
-        $query =  $this->db->query("SELECT id, name, color from items;"); 
- 
-        $record = $query->result();
-        $data = [];
- 
-        foreach($record as $row) {
-            $data['id'][] = $row->id;
-            $data['name'][] = $row->name;
-            $data['color'][] = $row->color;
+
+    public function unique_colors() {
+        $items_model = model(ItemsModel::class);
+        $items = $items_model->get_all_items();
+        $colors = array();
+        foreach($items as $item){
+            $color = strtolower($item['color']);
+            $colors[] = $color;
         }
-        $data['chart_data'] = json_encode($data);
-        $this->load->view('/dashboard',$data);
+        $unique_colors = (array_unique($colors));
+        return $unique_colors;
+    }
+
+    public function unique_items()
+    {
+        $items_model = model(ItemsModel::class);
+        $items = $items_model->get_all_items();
+        $names = array();
+        foreach($items as $item){
+            $name = strtolower($item['name']);
+            $names[] = $name;
+        }
+        $unique_items = (array_unique($names));
+        return $unique_items;
     }
 }
 ?>

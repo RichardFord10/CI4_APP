@@ -1,8 +1,10 @@
-<script type="text/javascript">
-const items_json = <?php echo $items_json;?>;
-</script>
+
+<?php 
 
 
+
+
+?>
 <!-- HTML START -->
 <main>
     <div class="container-fluid px-4">
@@ -32,9 +34,9 @@ const items_json = <?php echo $items_json;?>;
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-success text-white mb-4">
-                    <div class="card-body">Success Card</div>
+                    <div class="card-body"><?php echo(count($unique_items))." UNIQUE ITEMS IN INVENTORY"; ?></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <a class="small text-white stretched-link" href="/items">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
@@ -54,10 +56,9 @@ const items_json = <?php echo $items_json;?>;
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-chart-area me-1"></i>
-                        Area Chart Example
                     </div>
                     <div class="card-body">
-
+                    <canvas id="pie-chart" width="800" height="450"></canvas>
                     </div>
                 </div>
             </div>
@@ -65,7 +66,6 @@ const items_json = <?php echo $items_json;?>;
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-chart-bar me-1"></i>
-                        Bar Chart Example
                     </div>
                     <div class="card-body" id="chart-container">
                         <canvas id="colors-chart">
@@ -83,7 +83,9 @@ const items_json = <?php echo $items_json;?>;
             <?php if (!empty($items) && is_array($items)) : ?>
                 <div class="container-fluid">
                     <table id="myTable" class="table table-striped">
-                        <thead>
+                        <thead><th><div class="text-center">
+                <a href="/items/create" class="btn btn-success btn-sm">Create New</a>
+            </div></th>
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
@@ -149,5 +151,14 @@ const items_json = <?php echo $items_json;?>;
         </div>
     </div>
 </main>
+<script type="text/javascript">
+ unique_colors = <?php echo (json_encode($unique_colors));?>;
+ unique_items = <?php echo (json_encode($unique_items));?>;
+ items_json = <?php echo ($items_json);?>;
+
+
+
+</script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>/modules/admin/js/AJAX/app.js"></script>
+
