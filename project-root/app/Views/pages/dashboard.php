@@ -1,6 +1,14 @@
 
 <?php 
 
+$qty_all = 0;
+$total_cost = 0;
+foreach($items as $item)
+{
+    $qty_all += ($item['qty']);
+    $total_cost += ($item['cost']);
+}
+
 
 
 
@@ -16,10 +24,10 @@
         <div class="row">
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-primary text-white mb-4">
-                    <div class="card-body">Primary Card</div>
+                    <div class="card-body"><?php echo(array_sum(array($qty_all))). " TOTAL ITEMS IN INVENTORY";?></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        <div class="small text-white"><i class="fas fa-angle-right.' TOTAL ITEMS IN INVENTORY'"></i></div>
                     </div>
                 </div>
             </div>
@@ -34,7 +42,7 @@
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-success text-white mb-4">
-                    <div class="card-body"><?php echo(count($unique_items))." UNIQUE ITEMS IN INVENTORY"; ?></div>
+                    <div class="card-body"><?php echo(count(($unique_items)))." UNIQUE ITEMS IN INVENTORY"; ?></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/items">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -43,7 +51,7 @@
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">Danger Card</div>
+                    <div class="card-body">$<?php echo(array_sum(array($total_cost + 0))). ": CURRENT INVENTORY VALUE";?></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -154,7 +162,7 @@
 <script type="text/javascript">
  unique_colors = <?php echo (json_encode($unique_colors));?>;
  unique_items = <?php echo (json_encode($unique_items));?>;
- items_json = <?php echo ($items_json);?>;
+ items_json = <?php echo (json_encode($items_json));?>;
 
 
 

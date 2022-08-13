@@ -36,7 +36,7 @@ $(document).ready(function()
   //   items.push(unique_items[i]);
   // }
   var chartdata = {
-    labels: colors,
+    labels: names,
     datasets : [
       {
         label: 'Colors',
@@ -48,7 +48,7 @@ $(document).ready(function()
         barThickness: 6,
         maxBarThickness: 8,
         minBarLength: 2,
-        data: names
+        data: qtys
       }
     ]
   };
@@ -65,14 +65,14 @@ $(document).ready(function()
       labels: names,
       datasets: [{
         label: "Items",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "blue", "grey", "brown", "orange", "purple", "gold", "yellow"],
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "blue", "grey", "brown", "orange", "purple", "gold", "green" ],
         data: qtys
       }]
     },
     options: {
       title: {
         display: true,
-        text: 'Predicted world population (millions) in 2050'
+        text: 'Items'
       }
     }
 

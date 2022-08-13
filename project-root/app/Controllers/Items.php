@@ -103,11 +103,8 @@ class Items extends BaseController
         . view('templates/footer');
     }
 
-    public function get_dashboard_ajax(){
-        $model = model(ItemsModel::class);
-        $data = [ 'items' => $model->get_all_items()];
-        return json_encode($data);
-    }
+
+    
 
 }
 
