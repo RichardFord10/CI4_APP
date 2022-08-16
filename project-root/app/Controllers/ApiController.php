@@ -3,52 +3,68 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
-  
+
+use CodeIgniter\HTTP\RequestInterface;
+use stdClass;
+
+$request = \Config\Services::request();
+
+
+
+
+
+// ['data' => $this->send_makeup_request($search_term)]
+
+
+
 class ApiController extends Controller
 {
+    protected $request;
 
     public function index()
     { 
-        unset($search_term);
-        if(!isset($search_term))
+        if(!isset($_GET['product_type']))
         {
-            $search_term = $this->input->get('makeup_type');
 
-        }else{           
+            return view('templates/header', ['title' => 'Makeup API'])
+            . view('pages/makeup')
+            . view('templates/footer');
             
-            $search_term = 'Eyebrow';
         }
+        else
+        {
+            $search_term = $this->request->getMethod('product_type');
 
-        $searched_term = $this->send_makeup_api_request($search_term);
-        $data = ['searched_term'=>$searched_term];
-        return view('templates/header')
-        .view('pages/makeup', $data)
-        .view('templates/footer');
+            return view('templates/header', ['title' => 'Makeup API'])
+            . view('pages/makeup',['data'=>$this->send_makeup_request($search_term)])
+            . view('templates/footer');
 
-    }
-
-    public function send_makeup_api_request($search_term){
-    
-    $options = [
-        'baseURI' => 'http://makeup-api.herokuapp.com/api/v1/products.json?'.$search_term,
-        'timeout' => 3,
-    ];
-    
-    $client =  \Config\Services::curlrequest($options);
-    $response = $client->request('GET', $options['baseURI']);
-    return $response;
-    
+        }
     }
 
 
+    public function send_makeup_request($search_term)
+    {
+        if(isset($search_term))
+        {
+            $url = 'http://makeup-api.herokuapp.com/api/v1/products.json?'.$search_term;
+            /* Init cURL resource */
+            $ch = curl_init($url);
+            /* set the content type json */
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+            /* set return type json */
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            /* execute request */
+            $result = curl_exec($ch);
+            /* close cURL resource */
+            curl_close($ch);
 
-
-
-
-
-
-
-
-
-
+            $result = \json_decode($result);
+            // print_r($result['id']);exit();
+            return $result;
+        }
+    }
 }
+    
+
+    

@@ -49,6 +49,10 @@ $routes->get('about', 'Home::index');
 //Charts Routes
 $routes->get('/dashboard', 'Charts::bar_chart_js');
 
+//Makeup API
+$routes->get('pages/makeup', 'ApiController::index');
+$routes->get('pages/makeup', 'ApiController::send_makeup_api_request');
+$routes->get('makeup', 'ApiController::index');
 
 
 //item routes
@@ -75,9 +79,6 @@ $routes->get('pages', 'Pages::index');
 $routes->get('pages/dashboard', 'Dashboard::index',['filter' => 'auth']);
 $routes->get('pages/login', 'Login::index');
 $routes->get('pages/home', 'Home::index');
-$routes->get('pages/makeup', 'ApiController::index');
-
-
 
 
 

@@ -27,7 +27,7 @@ foreach($items as $item)
                     <div class="card-body"><?php echo(array_sum(array($qty_all))). " TOTAL ITEMS IN INVENTORY";?></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
-                        <div class="small text-white"><i class="fas fa-angle-right.' TOTAL ITEMS IN INVENTORY'"></i></div>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@ foreach($items as $item)
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-success text-white mb-4">
-                    <div class="card-body"><?php echo(count(($unique_items)))." UNIQUE ITEMS IN INVENTORY"; ?></div>
+                    <div class="card-body"><?php echo (count(($unique_items)))." UNIQUE ITEMS IN INVENTORY"; ?></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="/items">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -65,8 +65,8 @@ foreach($items as $item)
                     <div class="card-header">
                         <i class="fas fa-chart-area me-1"></i>
                     </div>
-                    <div class="card-body">
-                    <canvas id="pie-chart" width="800" height="450"></canvas>
+                    <div class="card-body"style="width:400px;height:400px;">
+                    <canvas id="pie-chart"></canvas>
                     </div>
                 </div>
             </div>

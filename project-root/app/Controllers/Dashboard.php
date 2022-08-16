@@ -30,17 +30,6 @@ class Dashboard extends Controller
         .view('templates/footer');
     }
 
-    public function send_makeup_api_request(){
 
-        $options = [
-            'baseURI' => 'http://makeup-api.herokuapp.com/api/v1/products.json?',
-            'timeout' => 3,
-        ];
-
-        $client =  \Config\Services::curlrequest($options);
-        $response = $client->request('GET', $options['baseURI']);
-        return $response;
-        
-    }
    
 }

@@ -1,5 +1,5 @@
         <!-- Page Content-->
-        <div class="container-fluid p-0">
+        <div class="container-fluid">
             <!-- About-->
             <section class="resume-section" id="about">
                 <div class="resume-section-content text-center">
@@ -10,7 +10,7 @@
                     <div class="profile-photo-container">
                     <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg">Developer</span>
-                <span class="d-lg-block"><img style="width:50%;height:auto;"class="img-fluid img-profile rounded-circle mx-auto mb-2" src="<?php echo base_url(); ?>/modules/admin/img/profile.jpg" alt="..." /></span></a>                    
+                <span class="d-lg-block"><img style="width:250px;height:auto;"class="img-fluid img-profile rounded-circle mx-auto mb-2" src="<?php echo base_url(); ?>/modules/admin/img/profile.jpg" alt="..." /></span></a>                    
                 <div class="subheading mb-5">
                         425 Third Street · Weatherly, PA 18255 · (386) 559-1009 ·
                         <a href="mailto:richardford10@gmail.com">RichardFord10@gmail.com</a>
