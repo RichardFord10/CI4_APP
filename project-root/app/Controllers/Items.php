@@ -58,7 +58,7 @@ class Items extends BaseController
         }
 
         return view('templates/header', ['title' => 'Create items'])
-            . view('items/create', ['colors' => $model->get_distinct('color'), 'category'=>$model->get_distinct('category')])
+            . view('items/create', ['colors' => $model->get_distinct('color'), 'category'=>$model->get_distinct('category'), 'items' => $model->get_all_items()])
             . view('templates/footer');
     }
 
@@ -104,7 +104,19 @@ class Items extends BaseController
     }
 
 
-    
+    public function calculate_total_items(){
+
+        $items_model = new ItemsModel();
+        $items = $items_model->get_all_items();
+        $sum_data = 0;
+        foreach($items as $i)
+        {
+            $sum_data += $i['qty'] * $i['price'];
+        }
+
+        return $sum_data;
+
+    }
 
 }
 

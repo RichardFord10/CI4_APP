@@ -24,7 +24,7 @@ foreach($items as $item)
         <div class="row">
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-primary text-white mb-4">
-                    <div class="card-body"><?php echo(array_sum(array($qty_all))). " TOTAL ITEMS IN INVENTORY";?></div>
+                    <div class="card-body"><?php echo(array_sum(array($qty_all))). " TOTAL UNITS IN INVENTORY";?></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -51,7 +51,7 @@ foreach($items as $item)
             </div>
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-danger text-white mb-4">
-                    <div class="card-body">$<?php echo(array_sum(array($total_cost + 0))). ": CURRENT INVENTORY VALUE";?></div>
+                    <div class="card-body">$<?php echo number_format($sum_items, 2);?> : CURRENT INVENTORY VALUE</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -132,10 +132,10 @@ foreach($items as $item)
                                         <?php echo ($item['qty']); ?>
                                     </td>
                                     <td>
-                                        <?php echo ("$" . $item['cost'] / 100); ?>
+                                        <?php echo ("$" . $item['cost']); ?>
                                     </td>
                                     <td>
-                                        <?php echo ("$" . $item['price'] / 100); ?>
+                                        <?php echo ("$" . $item['price']); ?>
                                     </td>
                                     <td>
                                         <?php echo (!empty($item['color'])) ?  ucfirst($item['color']) : $item['color']; ?>
@@ -163,6 +163,8 @@ foreach($items as $item)
  unique_colors = <?php echo (json_encode($unique_colors));?>;
  unique_items = <?php echo (json_encode($unique_items));?>;
  items_json = <?php echo (json_encode($items_json));?>;
+ grouped_items = <?php echo (json_encode($grouped_items));?>;
+
 
 
 

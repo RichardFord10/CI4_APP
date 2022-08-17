@@ -100,10 +100,11 @@
                                                 <label class="input-group-text" for="inputGroupSelect04">Brand</label>
                                             </div>
                                             <select class="custom-select form-control" name="brand" id="inputGroupSelect04">
-                                                <option selected value="#">Choose a Brand</option>
-                                                <option value="2">Black</option>
-                                                <option value="3">Red</option>
-                                                <option value="2">Purple</option>
+                                            <?php foreach ($items as $c) : ?>
+                                                    <?php if (isset($c['brand']) && $c['brand'] != NULL) { ?>
+                                                        <option value="<?php echo ($c['brand']) ?>"><?php echo ($c['brand']) ?></option>
+                                                    <?php } ?>
+                                                <?php endforeach ?>
                                             </select>
                                         </div>
                                     </div>

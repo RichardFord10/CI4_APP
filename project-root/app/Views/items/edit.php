@@ -85,7 +85,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="input-group mb-3">
-                                            <input type="file" name = "image" id="inputGroupSelet06" accept="image/*" />
+                                            <input type="file" name="image" id="inputGroupSelet06"/>
                                         </div>
                                     </div>
                                 </div>

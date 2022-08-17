@@ -35,5 +35,22 @@ class Charts extends Controller {
         $unique_items = (array_unique($names));
         return $unique_items;
     }
+
+    public function group_items_and_sum_qtys($data) {
+        $groups = array();
+        foreach ($data as $item) {
+            $key = $item['name'];
+            if (!array_key_exists($key, $groups)) {
+                $groups[$key] = array(
+                    'name' => $item['name'],
+                    'qty' => $item['qty'],
+                );
+            } else {
+                $groups[$key]['qty'] = $groups[$key]['qty'] + $item['qty'];
+            }
+        }
+        return $groups;
+    }
+  
 }
 ?>

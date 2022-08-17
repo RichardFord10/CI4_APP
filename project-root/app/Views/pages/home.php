@@ -1,5 +1,5 @@
         <!-- Page Content-->
-        <div class="container-fluid">
+        <div class="container-fluid p-0">
             <!-- About-->
             <section class="resume-section" id="about">
                 <div class="resume-section-content text-center">
@@ -53,12 +53,12 @@
                     </div>
                 </div>
             </section>
-            <hr/>
+
             <!-- Education-->
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Education</h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">Luzerne County Community College</h3>
                             <div class="subheading mb-3">Associates Program</div>
