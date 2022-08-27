@@ -19,6 +19,29 @@ class Locations extends BaseController
             . view('templates/footer');
     }
 
+    public function create()
+    {
+        $model = model(LocationsModel::class);
+
+        if ($this->request->getMethod() === 'post') {
+            $model->set_new_location(
+                $this->request->getPost('row'),
+                $this->request->getPost('shelf'),
+                $this->request->getPost('slot'),
+
+            );
+
+            session()->setFlashData('success', 'Location Creation Success!');
+
+            return view('templates/header', ['title' => 'Create items'])
+            . view('locations/overview', ['locations' => $model->get_all_locations()])
+            . view('templates/footer');
+        }
+
+        return view('templates/header', ['title' => 'Create items'])
+            . view('locations/create', ['row'=>$model->get_distinct('row'), 'slot'=>$model->get_distinct('slot'), 'shelf'=>$model->get_distinct('shelf')])
+            . view('templates/footer');
+    }
 
 }
 

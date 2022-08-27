@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <h3>Locations Overview:</h2>
             <div class="text-center">
-                <a href="create" class="btn btn-success btn-sm">Create New</a>
+                <a href="/locations/create" class="btn btn-success btn-sm">Create New</a>
             </div>
             <hr>
             <?php if (!empty($locations) && is_array($locations)) : ?>

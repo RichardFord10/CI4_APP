@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Models\ItemsModel;
+use App\Models\LocationsModel;
 
 class Items extends BaseController
 {
@@ -36,6 +37,7 @@ class Items extends BaseController
     public function create()
     {
         $model = model(ItemsModel::class);
+        $locations_model = model(LocationsModel::class);
 
         if ($this->request->getMethod() === 'post') {
             $model->save([
@@ -47,18 +49,21 @@ class Items extends BaseController
                 'category' => $this->request->getPost('category'),
                 'brand' => $this->request->getPost('brand'),
                 'images' => $this->request->getPost('image'),
+                'row' => $this->request->getPost('row'),
+                'shelf' => $this->request->getPost('shelf'),
+                'slot' => $this->request->getPost('slot')
 
             ]);
 
             session()->setFlashData('success', 'Item Creation Success!');
 
             return view('templates/header', ['title' => 'Create items'])
-            . view('items/overview', ['items' => $model->get_all_items()])
+            . view('items/overview', ['items' => $model->get_all_items(), ])
             . view('templates/footer');
         }
 
         return view('templates/header', ['title' => 'Create items'])
-            . view('items/create', ['colors' => $model->get_distinct('color'), 'category'=>$model->get_distinct('category'), 'items' => $model->get_all_items()])
+            . view('items/create', ['colors' => $model->get_distinct('color'), 'category'=>$model->get_distinct('category'), 'items' => $model->get_all_items(), 'row'=>$locations_model->get_distinct('row'), 'slot'=>$locations_model->get_distinct('slot'), 'shelf'=>$locations_model->get_distinct('shelf')])
             . view('templates/footer');
     }
 

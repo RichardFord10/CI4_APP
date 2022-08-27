@@ -1,21 +1,6 @@
 <form action="/items/create" method="post">
     <?= csrf_field() ?>
     <div class="container">
-
-    <?php 
-    
-
-
-
-
-
-
-
-
-
-
-
-    ?>
         <div class="row justify-content-center">
             <div class="col-lg-5">
                 <div class="card shadow-lg border-0 rounded-lg mt-5">
@@ -100,7 +85,7 @@
                                                 <label class="input-group-text" for="inputGroupSelect04">Brand</label>
                                             </div>
                                             <select class="custom-select form-control" name="brand" id="inputGroupSelect04">
-                                            <?php foreach ($items as $c) : ?>
+                                                <?php foreach ($items as $c) : ?>
                                                     <?php if (isset($c['brand']) && $c['brand'] != NULL) { ?>
                                                         <option value="<?php echo ($c['brand']) ?>"><?php echo ($c['brand']) ?></option>
                                                     <?php } ?>
@@ -110,24 +95,62 @@
                                     </div>
                                 </div>
                                 <hr>
+                                <span class="text-center">
+                                    <h5>Locations</h5>
+                                </span>
                                 <div class="row">
                                     <div class="col">
                                         <div class="input-group mb-3">
-                                            <input type="file" id="inputGroupSelet06" accept="image/*" />
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">Row</label>
+                                            </div>
+                                            <select class="custom-select form-control" name="row" id="inputGroupSelect04">
+                                                <?php foreach ($row as $c) : ?>
+                                                    <?php if (isset($c['row']) && $c['row'] != NULL) { ?>
+                                                        <option value="<?php echo ($c['row']) ?>"><?php echo ($c['row']) ?></option>
+                                                    <?php } ?>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect02">Shelf</label>
+                                            </div>
+                                            <input type="text" placeholder="Shelf" name="shelf" id="inputGroupSelect02" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect02">Slot</label>
+                                            </div>
+                                            <input type="text" placeholder="Slot" name="slot" id="inputGroupSelect02" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input-group mb-3">
+                                                <input type="file" id="inputGroupSelet06" accept="image/*" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!--form floating-->
                             </div>
-                            <!--form floating-->
+                            <!--card body-->
                         </div>
-                        <!--card body-->
+                        <button class="btn btn-primary mx-auto d-block" type="submit">Submit</a>
                     </div>
-                    <button class="btn btn-primary mx-auto d-block" type="submit">Submit</a>
+                    <div class="card-footer text-center py-3"></div>
                 </div>
-                <div class="card-footer text-center py-3"></div>
             </div>
         </div>
-    </div>
     </div>
     </main>
     </div>

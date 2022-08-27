@@ -30,10 +30,24 @@ class LocationsModel extends Model
     public function get_distinct($column)
     {
         $db  = \Config\Database::connect();
-        $query = $db->query('SELECT distinct '.$column . ' from items', false);
+        $query = $db->query('SELECT distinct '.$column . ' from locations', false);
         return $query->getResultArray();
-
     }
+
+    public function set_new_location($row, $shelf, $slot)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('locations');
+        $data = [
+            'row' => $row,
+            'shelf' => $shelf,
+            'slot'  => $slot,
+        ];
+
+        $builder->insert($data);
+    }
+
+    
 
 
 }

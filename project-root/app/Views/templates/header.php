@@ -117,6 +117,21 @@
                                             <a class="nav-link" href="password">Forgot Password</a>
                                         </nav>
                                     </div>
+                                   
+                                </nav>
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionLocations">
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#LocationsCollapseAuth" aria-expanded="false" aria-controls="LocationsCollapseAuth">
+                                        Locations
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="LocationsCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="/locations">Overview</a>
+                                        </nav>
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="/locations/create">Create Location</a>
+                                        </nav>
+                                    </div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                         Error
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>

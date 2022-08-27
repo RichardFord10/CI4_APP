@@ -29,7 +29,7 @@ class Charts extends Controller {
         $items = $items_model->get_all_items();
         $names = array();
         foreach($items as $item){
-            $name = strtolower($item['name']);
+            $name = strtolower($item['name'] ?? "");
             $names[] = $name;
         }
         $unique_items = (array_unique($names));

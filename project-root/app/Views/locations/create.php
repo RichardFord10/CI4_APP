@@ -1,7 +1,6 @@
-<form action="/items/create" method="post">
+<form action="/locations/create" method="post">
     <?= csrf_field() ?>
     <div class="container">
-
         <div class="row justify-content-center">
             <div class="col-lg-5">
                 <div class="card shadow-lg border-0 rounded-lg mt-5">
@@ -10,110 +9,55 @@
                     </div>
                     <div class="card-body">
                         <div class="form-floating mb-3">
-                            <div class="row">
-                                <div class="col">
-                                    <input type="text" class="form-control" name="name" placeholder="Item Name">
+                                <span class="text-center">
+                                    <h5>Locations</h5>
+                                </span>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">Row</label>
+                                            </div>
+                                            <select class="custom-select form-control" name="row" id="inputGroupSelect04">
+                                                <?php foreach ($row as $c) : ?>
+                                                    <?php if (isset($c['row']) && $c['row'] != NULL) { ?>
+                                                        <option value="<?php echo ($c['row']) ?>"><?php echo ($c['row']) ?></option>
+                                                    <?php } ?>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect02">Shelf</label>
+                                            </div>
+                                            <input type="text" placeholder="Shelf" name="shelf" id="inputGroupSelect02" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect02">Slot</label>
+                                            </div>
+                                            <input type="text" placeholder="Slot" name="slot" id="inputGroupSelect02" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
                                 </div>
+                                <!--form floating-->
                             </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" for="inputGroupSelect01">QTY</label>
-                                        </div>
-                                        <input type="text" placeholder="Qty" name="qty" id="inputGroupSelect01" class="form-control">
-
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" for="inputGroupSelect02">$</label>
-                                        </div>
-                                        <input type="text" placeholder="Cost" name="cost" id="inputGroupSelect02" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" for="inputGroupSelect02">$</label>
-                                        </div>
-                                        <input type="text" placeholder="Price" name="price" id="inputGroupSelect02" class="form-control">
-                                    </div>
-                                </div>
-
-                                <hr>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="inputGroupSelect04">Category</label>
-                                            </div>
-                                            <select class="custom-select form-control" name="category" id="inputGroupSelect04">
-                                                <option selected value="#">Choose a Category</option>
-                                                <?php foreach ($category as $cat) : ?>
-                                                    <?php if (isset($cat['category']) && $cat['category'] != NULL) { ?>
-                                                        <option value="<?php echo ($cat['category']) ?>"><?php echo ($cat['category']) ?></option>
-                                                    <?php } ?>
-                                                <?php endforeach ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="inputGroupSelect05">Color</label>
-                                            </div>
-                                            <select class="custom-select form-control" name="color" id="inputGroupSelect05">
-                                                <option selected value="#">Choose a Color</option>
-                                                <?php foreach ($colors as $c) : ?>
-                                                    <?php if (isset($c['color']) && $c['color'] != NULL) { ?>
-                                                        <option value="<?php echo ($c['color']) ?>"><?php echo ($c['color']) ?></option>
-                                                    <?php } ?>
-                                                <?php endforeach ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="inputGroupSelect04">Brand</label>
-                                            </div>
-                                            <select class="custom-select form-control" name="brand" id="inputGroupSelect04">
-                                            <?php foreach ($items as $c) : ?>
-                                                    <?php if (isset($c['brand']) && $c['brand'] != NULL) { ?>
-                                                        <option value="<?php echo ($c['brand']) ?>"><?php echo ($c['brand']) ?></option>
-                                                    <?php } ?>
-                                                <?php endforeach ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="input-group mb-3">
-                                            <input type="file" id="inputGroupSelet06" accept="image/*" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--form floating-->
+                            <!--card body-->
                         </div>
-                        <!--card body-->
+                        <button class="btn btn-primary mx-auto d- mb-2" type="submit">Submit</a>
                     </div>
-                    <button class="btn btn-primary mx-auto d-block" type="submit">Submit</a>
+                    <div class="card-footer text-center py-3"></div>
                 </div>
-                <div class="card-footer text-center py-3"></div>
             </div>
         </div>
-    </div>
     </div>
     </main>
     </div>

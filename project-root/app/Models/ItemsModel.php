@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class ItemsModel extends Model
 {
     protected $table = 'items';
-    protected $allowedFields = ["id","name","qty","cost","price","color","category","brand","images", "location_one", "location_two"];
+    protected $allowedFields = ["id","name","qty","cost","price","color","category","brand","images", "row", "shelf", "slot"];
 
     public function get_item_by_id($id = null)
     {
@@ -21,7 +21,7 @@ class ItemsModel extends Model
 
     public function get_all_items()
     {
-            return $this->findAll();
+        return $this->findAll();
 
     }
 
