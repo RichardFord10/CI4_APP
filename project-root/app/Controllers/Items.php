@@ -62,6 +62,9 @@ class Items extends BaseController
             . view('templates/footer');
     }
 
+    public function read()
+    {
+    }
     public function edit()
     {
         $model = model(ItemsModel::class);
