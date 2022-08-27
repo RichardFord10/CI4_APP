@@ -132,10 +132,10 @@ foreach($items as $item)
                                         <?php echo ($item['qty']); ?>
                                     </td>
                                     <td>
-                                        <?php echo ("$" . $item['cost']); ?>
+                                        <?php echo ("$" . number_format(($item['cost']))); ?>
                                     </td>
                                     <td>
-                                        <?php echo ("$" . $item['price']); ?>
+                                        <?php echo ("$" . number_format($item['price'])); ?>
                                     </td>
                                     <td>
                                         <?php echo (!empty($item['color'])) ?  ucfirst($item['color']) : $item['color']; ?>

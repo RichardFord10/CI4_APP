@@ -46,13 +46,22 @@ $routes->match(['get', 'post'], 'dashboard', 'Dashboard::index');
 $routes->get('/', 'Home::index');
 $routes->get('about', 'Home::index');
 
+//location routes
+$routes->get('/locations', 'Locations::index');
+$routes->match(['get', 'post'], 'locations/create', 'Locations::create');
+$routes->match(['get', 'post'], 'locations/edit', 'Locations::edit');
+$routes->match(['get', 'post'], 'locations/delete', 'Locations::delete');
+
+
+
+
 //Charts Routes
 $routes->get('/dashboard', 'Charts::bar_chart_js');
 
-//Makeup API
+//API
 $routes->get('pages/makeup', 'ApiController::index');
 $routes->get('pages/makeup', 'ApiController::send_makeup_api_request');
-$routes->get('makeup', 'ApiController::index');
+$routes->get('/makeup', 'ApiController::index');
 
 
 //item routes
@@ -79,6 +88,7 @@ $routes->get('pages', 'Pages::index');
 $routes->get('pages/dashboard', 'Dashboard::index',['filter' => 'auth']);
 $routes->get('pages/login', 'Login::index');
 $routes->get('pages/home', 'Home::index');
+
 
 
 

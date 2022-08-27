@@ -17,14 +17,14 @@ $(document).ready(function()
     datasets : [
       {
         
-        label: 'Qty',
+        label: 'Currently in Stock',
         backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", "blue", "grey", "brown", "orange", "purple", "gold", "green" ],
         borderColor: "#e8c3b9",
         hoverBackgroundColor: "#3cba9f",
         hoverBorderColor: "#8e5ea2",
         barPercentage: 1.0,
-        barThickness: 25,
-        maxBarThickness: 8,
+        barThickness: 50,
+        maxBarThickness: 50,
         minBarLength: 2,
         data: qtys
       }
