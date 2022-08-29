@@ -38,6 +38,9 @@ $routes->set404Override();
 
 //Command Line Tool Routes
 $routes->cli('apptools/make_locations/(:segment)', 'AppTools::make_locations/$1');
+$routes->cli('apptools/assign_random_location_to_items', 'AppTools::assign_random_location_to_items');
+$routes->cli('apptools/add_random_items_to_items_table/(:segment)', 'AppTools::add_random_items_to_items_table/$1');
+
 
 
 //Dashboard Routes

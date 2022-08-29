@@ -36,7 +36,7 @@ class Charts extends Controller {
         return $unique_items;
     }
 
-    public function group_items_and_sum_qtys($data) {ls
+    public function group_items_and_sum_qtys($data) {
         $groups = array();
         foreach ($data as $item) {
             $key = $item['name'];
