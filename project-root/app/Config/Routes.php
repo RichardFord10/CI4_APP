@@ -36,6 +36,10 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
+//Command Line Tool Routes
+$routes->cli('apptools/make_locations/(:segment)', 'AppTools::make_locations/$1');
+
+
 //Dashboard Routes
 $routes->get('dashboard', 'Dashboard::index');
 $routes->match(['get', 'post'], 'dashboard', 'Dashboard::index');
