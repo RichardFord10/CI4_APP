@@ -126,4 +126,11 @@ class AppTools extends Controller
         
     }
 
+    public function seed_db()
+    {
+        
+        $this->add_random_items_to_items_table(100);
+        $this->assign_random_location_to_items();
+    }
+
 }
