@@ -19,6 +19,9 @@
                                 <th>Price</th>
                                 <th>Color</th>
                                 <th>Category</th>
+                                <th>Row</th>
+                                <th>Shelf</th>
+                                <th>Slot</th>
                                 <th>Edit </th>
                                 <th>Delete </th>
                             </tr>
@@ -32,11 +35,15 @@
                                 <th>Price</th>
                                 <th>Color</th>
                                 <th>Category</th>
+                                <th>Row</th>
+                                <th>Shelf</th>
+                                <th>Slot</th>
                                 <th>Edit </th>
                                 <th>Delete </th>
                             </tr>
                         </tfoot>
                         <tbody>
+                
                             <?php foreach ($items as $item) : ?>
                                 <tr>
                                     <td>
@@ -61,6 +68,15 @@
                                         <?php echo (ucfirst($item['category'])); ?>
                                     </td>
                                     <td>
+                                        <?php echo (ucfirst($item['row'])); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo (ucfirst($item['shelf'])); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo (ucfirst($item['slot'])); ?>
+                                    </td>
+                                    <td>
                                         <a class="text-center" href="/items/edit?id=<?php echo ($item['id']); ?>"><i class="fas fa-edit"></i></a>
                                     </td>
                                     <td>
@@ -76,12 +92,10 @@
 
 </main>
 
-
-
 <?php else : ?>
 
-    <h3>No items</h3>
+<h3>No items</h3>
 
-    <p>Unable to find any items for you.</p>
+<p>Unable to find any items for you.</p>
 
 <?php endif ?>

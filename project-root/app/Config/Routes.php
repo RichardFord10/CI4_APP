@@ -50,7 +50,7 @@ $routes->match(['get', 'post'], 'dashboard', 'Dashboard::index');
 
 
 //Home routes
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Dashboard::index');
 $routes->get('about', 'Home::index');
 
 //location routes
@@ -94,7 +94,7 @@ $routes->get('pages/register', 'Register::index');
 $routes->get('pages', 'Pages::index');
 $routes->get('pages/dashboard', 'Dashboard::index',['filter' => 'auth']);
 $routes->get('pages/login', 'Login::index');
-$routes->get('pages/home', 'Home::index');
+
 
 
 

@@ -36,7 +36,7 @@ class Login extends BaseController
                     'title' => 'Login',
                 ];
                 session()->setFlashdata('success', 'Login Success!');
-                return view('templates/header',$data).view('/pages/home').view('templates/footer');
+                return view('templates/header',$data).view('/pages/dashboard').view('templates/footer');
             }else{
                 $data = [
                     'title' => 'Login',
