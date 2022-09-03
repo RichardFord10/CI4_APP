@@ -1,39 +1,87 @@
-<?php ?>
-<div class="row style='display:inline;'">Select what kind of search to use
-    <div class="form-check form-check-inline-block">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked>
-        <label class="form-check-label" for="inlineCheckbox1">Type</label>
-    </div>
-    <div class="form-check form-check-inline-block">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-        <label class="form-check-label" for="inlineCheckbox2">Category</label>
-    </div>
-    <div class="form-check form-check-inline-block">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" >
-        <label class="form-check-label" for="inlineCheckbox3">Brand</label>
-    </div>
-</div>
-<form action="/makeup" method="GET" name="makeup_form">
-    <div class="container-fluid">
-        <div class="d-flex justify-content-start">
-            <label for="makeup_type">Choose a Type:&nbsp;</label>
-            <select class="dropdown" name="product_type" id="makeup_type">
-                <option value="Blush">Blush</option>
-                <option value="Bronzer">Bronzer</option>
-                <option value="Eyebrow">Eyebrow</option>
-                <option value="Eyeliner">Eyeliner</option>
-                <option value="Eye%20Shadow">Eye Shadow</option>
-                <option value="Foundation">Foundation</option>
-                <option value="Lip%20Liner">Lip Liner</option>
-                <option value="Lip%20Stick">Lip Stick</option>
-                <option value="Mascara">Mascara</option>
-                <option value="Nail%20Polish">Nail Polish</option>
-            </select>
-            <br>&nbsp;&nbsp;
-            <div class="inline"> <button type="submit" name="makeup_form" class="btn btn-primary" value="submit">Submit</button>
+
+
+<form action="/makeup" method="GET" name="makeup_form" class="makeup_form">
+    <div class="row style='display:inline;'">Select what kind of search to use
+        <div class="input-group">
+            <div class="form-check">
+                <input class="form-check-input product_category" type="radio" name="product_category" id="product_category" onclick="return submitForm()" <?php echo(isset($_GET['product_category']) ? 'checked' : '');?>
+                <label class="form-check-label" for="product_category">Category&nbsp;&nbsp;</label>
             </div>
+            <div class="form-check">
+                <input class="form-check-input product_type" type="radio" name="product_type" id="flexRadioDefault2" onclick="return submitForm()"<?php echo(isset($_GET['product_type']) ? 'checked' : '');?>>
+                <label class="form-check-label" for="product_type">Type&nbsp;&nbsp;</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input brand" type="radio" name="brand" id="flexRadioDefault1" onclick="return submitForm()" <?php echo(isset($_GET['brand']) ? 'checked' : '');?>>
+                <label class="form-check-label" for="brand">Brand&nbsp;&nbsp;</label>
+            </div>
+        </div>
+    </div>
+    <?php if(isset($_GET['product_category']))
+    {
+        echo('
+        <div class="container-fluid">
+        <div class="d-flex justify-content-start">
+        <label for="makeup_type">Choose an Item Group:&nbsp;</label>
+        <select class="form-group dropdown" name="item" id="makeup_type">
+        <option value="Blush">Blush</option>
+        <option value="Bronzer">Bronzer</option>
+        <option value="Eyebrow">Eyebrow</option>
+        <option value="Eyeliner">Eyeliner</option>
+        <option value="Eye%20Shadow">Eye Shadow</option>
+        <option value="Foundation">Foundation</option>
+        <option value="Lip%20Liner">Lip Liner</option>
+        <option value="Lip%20Stick">Lip Stick</option>
+        <option value="Mascara">Mascara</option>
+        <option value="Nail%20Polish">Nail Polish</option>
+        </select>
+        <br>&nbsp;&nbsp;
+        <div class="inline"> <button type="submit" name="makeup_form" class="btn btn-primary" value="submit">Submit</button>
+        </div>');
+    }elseif(isset($_GET['product_type']))
+    {
+        echo('
+        <div class="container-fluid">
+        <div class="d-flex justify-content-start">
+        <label for="makeup_type">Choose an Item Group:&nbsp;</label>
+        <select class="form-group dropdown" name="item" id="makeup_type">
+        <option value="Blush">Blush</option>
+        <option value="Bronzer">Bronzer</option>
+        <option value="Eyebrow">Eyebrow</option>
+        <option value="Eyeliner">Eyeliner</option>
+        <option value="Eye%20Shadow">Eye Shadow</option>
+        <option value="Foundation">Foundation</option>
+        <option value="Lip%20Liner">Lip Liner</option>
+        <option value="Lip%20Stick">Lip Stick</option>
+        <option value="Mascara">Mascara</option>
+        <option value="Nail%20Polish">Nail Polish</option>
+        </select>
+        <br>&nbsp;&nbsp;
+        <div class="inline"> <button type="submit" name="makeup_form" class="btn btn-primary" value="submit">Submit</button>
+        </div>');
+    }elseif(isset($_GET['brand']))
+    {
+        echo('
+        <div class="container-fluid">
+        <div class="d-flex justify-content-start">
+        <label for="makeup_type">Choose an Item Group:&nbsp;</label>
+        <select class="form-group dropdown" name="item" id="makeup_type">
+        <option value="Blush">Blush</option>
+        <option value="Bronzer">Bronzer</option>
+        <option value="Eyebrow">Eyebrow</option>
+        <option value="Eyeliner">Eyeliner</option>
+        <option value="Eye%20Shadow">Eye Shadow</option>
+        <option value="Foundation">Foundation</option>
+        <option value="Lip%20Liner">Lip Liner</option>
+        <option value="Lip%20Stick">Lip Stick</option>
+        <option value="Mascara">Mascara</option>
+        <option value="Nail%20Polish">Nail Polish</option>
+        </select>
+        <br>&nbsp;&nbsp;
+        <div class="inline"> <button type="submit" name="makeup_form" class="btn btn-primary" value="submit">Submit</button>
+        </div>');
+    }?>
 </form>
-<span class="justify-content-center">&nbsp;&nbsp;&nbsp;<strong>Use the dropdown to the left to select different categories of makeup. These items are pulled using Curl, PHP & a free makeup API I found online</strong></span>
 </div>
 <br>
 

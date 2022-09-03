@@ -33,7 +33,23 @@ class ApiController extends Controller
         }
         else
         {
-            $search_term = $this->request->getMethod('product_type');
+            
+            $product_type = $this->request->getMethod('product_type');
+            $product_category = $this->request->getMethod('product_category');
+            $brand = $this->request->getMethod('product_brand');
+
+            if(isset($product_type))
+            {
+                $search_term = $product_type;
+                
+            }elseif(isset($product_category))
+            {
+                $search_term = $product_category;
+            }
+            elseif(isset($brand))
+            {
+                $search_term = $brand;
+            }
 
             return view('templates/header', ['title' => 'Makeup API'])
             . view('pages/makeup',['data'=>$this->send_makeup_request($search_term)])

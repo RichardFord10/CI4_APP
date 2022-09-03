@@ -10,7 +10,7 @@ use stdClass;
 
 class AppTools extends Controller
 {
-    //FUNCTIONS TO GENERATE RANDOM DATA FOR DASHBOARD: make_locations, assign_random_location_to_items, add_ranom_items_to_items_table
+    //FUNCTIONS TO GENERATE RANDOM DATA FOR DASHBOARD
     public function make_locations($num)
     {
         $model = new LocationsModel();

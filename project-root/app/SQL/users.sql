@@ -15,5 +15,8 @@ CREATE TABLE public.users (
 	CONSTRAINT users_pkey PRIMARY KEY (user_id)
 );
 
+--Password is 123456
 
-
+INSERT INTO public.users
+(user_name, user_email, first_name, last_name, "password", "role")
+VALUES('admin', 'admin@admin.com', 'Admin', 'Admin', '$2y$10$mq7ul8pRM6IrQsVG.Y/68eIBOGnf1PGePLVqvajUGrn5LLAeu0bGK', 'admin');

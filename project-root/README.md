@@ -1,3 +1,22 @@
+PHP based Content Management System with Codeigniter 4 and Postgres.
+
+Run the SQL files for base data and table creation.
+
+Seed the DB via cli by going to /public and typing
+
+php index.php Apptools seed_db
+
+Start a localhost server by navigating to project-root and typing
+
+php spark serve
+
+Currently set to port 8080
+Postgres server set to port 5432
+
+admin password is 123456
+
+
+
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?

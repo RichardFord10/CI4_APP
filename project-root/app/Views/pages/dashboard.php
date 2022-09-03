@@ -24,7 +24,7 @@ foreach($items as $item)
         <div class="row">
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-primary text-white mb-4">
-                    <div class="card-body"><?php echo(array_sum(array($qty_all))). " TOTAL UNITS IN INVENTORY";?></div>
+                    <div class="card-body"><?php echo number_format((array_sum(array($qty_all)))). " TOTAL UNITS IN INVENTORY";?></div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="#">View Details</a>
                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -85,7 +85,7 @@ foreach($items as $item)
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                DataTable Example
+                 Items
             </div>
             <div class="card-body table-responsive">
             <?php if (!empty($items) && is_array($items)) : ?>
@@ -101,6 +101,7 @@ foreach($items as $item)
                                 <th>Cost</th>
                                 <th>Price</th>
                                 <th>Color</th>
+                                <th>Brand</th>
                                 <th>Category</th>
                                 <th>Edit </th>
                                 <th>Delete </th>
@@ -114,6 +115,7 @@ foreach($items as $item)
                                 <th>Cost</th>
                                 <th>Price</th>
                                 <th>Color</th>
+                                <th>Brand</th>
                                 <th>Category</th>
                                 <th>Edit </th>
                                 <th>Delete </th>
@@ -139,6 +141,9 @@ foreach($items as $item)
                                     </td>
                                     <td>
                                         <?php echo (!empty($item['color'])) ?  ucfirst($item['color']) : $item['color']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo (ucfirst($item['brand'])); ?>
                                     </td>
                                     <td>
                                         <?php echo (ucfirst($item['category'])); ?>

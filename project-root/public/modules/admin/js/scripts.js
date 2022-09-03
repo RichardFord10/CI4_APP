@@ -28,3 +28,12 @@ window.addEventListener('DOMContentLoaded', event => {
 $(document).ready( function () {
     ($('#myTable').DataTable());
 } );
+
+
+function submitForm()
+{
+
+    $(".makeup_form").submit();
+
+}
+

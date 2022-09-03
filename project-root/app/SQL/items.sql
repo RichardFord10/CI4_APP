@@ -59,3 +59,4 @@ VALUES('Gloves', 75, 5, 10, 'Green', 'Clothing', 'Brand 7', NULL, 12, 10, 12, 'E
 INSERT INTO public.items
 ( "name", qty, "cost", price, color, category, brand, images, height, width, "depth", "row", shelf, slot)
 VALUES('Sweater', 5, 15, 15, 'Black', 'Clothing', 'Brand 7', NULL, 12, 10, 12, 'M', '4', '5');
+
