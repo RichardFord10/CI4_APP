@@ -1,13 +1,7 @@
 
 <?php 
 
-$qty_all = 0;
-$total_cost = 0;
-foreach($items as $item)
-{
-    $qty_all += ($item['qty']);
-    $total_cost += ($item['cost']);
-}
+
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+
 use CodeIgniter\Controller;
 use App\Models\ItemsModel;
   
@@ -18,6 +19,16 @@ class Dashboard extends Controller
         $grouped_items = $chart->group_items_and_sum_qtys($items);
         $sum_items = $i->calculate_total_items();
 
+        $qty_all = 0;
+        $total_cost = 0;
+        
+        foreach($items as $item)
+        {
+            $qty_all += ($item['qty']);
+            $total_cost += ($item['cost']);
+        }
+
+
         $data = [
             'title' => 'Dashboard',
             'items' => $items, 
@@ -25,7 +36,8 @@ class Dashboard extends Controller
             'unique_colors' => $unique_colors,
             'unique_items' => $unique_items,
             'grouped_items' => $grouped_items,
-            'sum_items' => $sum_items
+            'sum_items' => $sum_items,
+            'qty_all' => $qty_all
         ];
 
         return view('templates/header', $data)

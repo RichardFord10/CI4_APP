@@ -17,7 +17,7 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-// $routes->setDefaultController('Home');
+$routes->setDefaultController('Dashboard');
 // $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -42,12 +42,9 @@ $routes->cli('apptools/make_locations/(:segment)', 'AppTools::make_locations/$1'
 $routes->cli('apptools/assign_random_location_to_items', 'AppTools::assign_random_location_to_items');
 $routes->cli('apptools/add_random_items_to_items_table/(:segment)', 'AppTools::add_random_items_to_items_table/$1');
 
-
-
 //Dashboard Routes
 $routes->get('dashboard', 'Dashboard::index');
 $routes->match(['get', 'post'], 'dashboard', 'Dashboard::index');
-
 
 
 //Home routes
@@ -61,15 +58,18 @@ $routes->match(['get', 'post'], 'locations/edit', 'Locations::edit');
 $routes->match(['get', 'post'], 'locations/delete', 'Locations::delete');
 
 
-
-
 //Charts Routes
 $routes->get('/dashboard', 'Charts::bar_chart_js');
 
-//API
+//API - ApiController
+$routes->get('pages/makeup', 'ApiController::datausa');
+$routes->get('pages/makeup', 'ApiController::makeup');
+$routes->get('pages/makeup', 'ApiController::send_request');
 $routes->get('pages/makeup', 'ApiController::index');
-$routes->get('pages/makeup', 'ApiController::send_makeup_api_request');
 $routes->get('/makeup', 'ApiController::index');
+// API - Makeup page
+$routes->get('pages/makeup', 'Makeup::index');
+
 
 
 //item routes
@@ -95,9 +95,6 @@ $routes->get('pages/register', 'Register::index');
 $routes->get('pages', 'Pages::index');
 $routes->get('pages/dashboard', 'Dashboard::index',['filter' => 'auth']);
 $routes->get('pages/login', 'Login::index');
-
-
-
 
 
 //login/register routes

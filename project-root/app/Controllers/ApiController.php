@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use App\Controllers\Makeup;
+
 
 use CodeIgniter\HTTP\RequestInterface;
 use stdClass;
@@ -23,49 +25,38 @@ class ApiController extends Controller
 
     public function index()
     { 
-        if(!isset($_GET['product_type']))
-        {
 
-            return view('templates/header', ['title' => 'Makeup API'])
-            . view('pages/makeup')
-            . view('templates/footer');
-            
-        }
-        else
-        {
-            
-            $product_type = $this->request->getMethod('product_type');
-            $product_category = $this->request->getMethod('product_category');
-            $brand = $this->request->getMethod('product_brand');
-
-            if(isset($product_type))
-            {
-                $search_term = $product_type;
-                
-            }elseif(isset($product_category))
-            {
-                $search_term = $product_category;
-            }
-            elseif(isset($brand))
-            {
-                $search_term = $brand;
-            }
-
-            return view('templates/header', ['title' => 'Makeup API'])
-            . view('pages/makeup',['data'=>$this->send_makeup_request($search_term)])
-            . view('templates/footer');
-
-        }
+       return $this->makeup_page();
+        
     }
 
 
-    public function send_makeup_request($search_term)
+    public function datausa()
     {
-        if(isset($search_term))
+        $data = $this->send_request('https://datausa.io/api/');
+
+        return $data;
+
+    }
+
+    public function makeup_page()
+    {
+        $makeup = new Makeup();
+
+        return $makeup->index();
+    }
+
+    public function send_request($baseurl, $search_term = NULL, $options = NULL)
+    {
+        if(isset($baseurl))
         {
-            $url = 'http://makeup-api.herokuapp.com/api/v1/products.json?'.$search_term;
             /* Init cURL resource */
-            $ch = curl_init($url);
+            if(isset($search_term))
+            {
+                $ch = \curl_init($baseurl.$search_term.$options);
+            }else{
+                $ch = \curl_init($baseurl);
+            }
             /* set the content type json */
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
             /* set return type json */
@@ -74,12 +65,13 @@ class ApiController extends Controller
             $result = curl_exec($ch);
             /* close cURL resource */
             curl_close($ch);
-
             $result = \json_decode($result);
             // print_r($result['id']);exit();
             return $result;
+
         }
     }
+
 }
     
 

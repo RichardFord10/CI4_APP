@@ -33,7 +33,7 @@ $(document).ready( function () {
 function submitForm()
 {
 
-    $(".makeup_form").submit();
+        $(".makeup_form").submit();
 
 }
 
