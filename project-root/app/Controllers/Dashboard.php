@@ -28,7 +28,6 @@ class Dashboard extends Controller
             $total_cost += ($item['cost']);
         }
 
-
         $data = [
             'title' => 'Dashboard',
             'items' => $items, 

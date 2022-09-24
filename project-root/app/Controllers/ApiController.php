@@ -25,8 +25,11 @@ class ApiController extends Controller
 
     public function index()
     { 
-
-       return $this->makeup_page();
+        $url = \current_url();
+        if(strpos($url, '/makeup'))
+        {
+            return $this->makeup_page();
+        }
         
     }
 

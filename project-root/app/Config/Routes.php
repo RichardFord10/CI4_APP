@@ -62,13 +62,14 @@ $routes->match(['get', 'post'], 'locations/delete', 'Locations::delete');
 $routes->get('/dashboard', 'Charts::bar_chart_js');
 
 //API - ApiController
-$routes->get('pages/makeup', 'ApiController::datausa');
-$routes->get('pages/makeup', 'ApiController::makeup');
-$routes->get('pages/makeup', 'ApiController::send_request');
-$routes->get('pages/makeup', 'ApiController::index');
+$routes->get('apis/makeup', 'ApiController::datausa');
+$routes->get('apis/makeup', 'ApiController::makeup');
+$routes->get('apis/makeup', 'ApiController::send_request');
+$routes->get('apis/makeup', 'ApiController::index');
 $routes->get('/makeup', 'ApiController::index');
+$routes->get('apis/index', 'ApiController::index');
 // API - Makeup page
-$routes->get('pages/makeup', 'Makeup::index');
+$routes->get('apis/makeup', 'Makeup::index');
 
 
 

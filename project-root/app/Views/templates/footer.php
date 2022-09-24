@@ -19,6 +19,7 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </footer>
 </div>
+</div>
 </body>
 
 </html>

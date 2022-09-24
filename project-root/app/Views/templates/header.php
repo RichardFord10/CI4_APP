@@ -12,12 +12,12 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link href="<?php echo base_url(); ?>/modules/admin/css/styles.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/modules/admin/css/homestyles.css" rel="stylesheet">
-
-    </link>
+    <link href="<?php echo base_url(); ?>/modules/admin/css/styles.css" rel="stylesheet"/>
+    <link href="<?php echo base_url(); ?>/modules/admin/css/homestyles.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     
 
     <!-- CHART DATA-->

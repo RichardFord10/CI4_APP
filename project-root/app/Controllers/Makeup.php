@@ -30,7 +30,7 @@ class Makeup extends ApiController
         {
             //initial page load
             return view('templates/header', ['title' => 'Makeup API'])
-            . view('pages/makeup')
+            . view('apis/makeup')
             . view('templates/footer');
         
         }else{
@@ -42,7 +42,7 @@ class Makeup extends ApiController
                     $data           = $this->send_request($url.$search_term);
                     
                     return view('templates/header', ['title' => 'Makeup API'])
-                    . view('pages/makeup', [ 'data'=>$data])
+                    . view('apis/makeup', [ 'data'=>$data])
                     . view('templates/footer');
                     
                 }elseif(isset($_GET['brand']))
@@ -52,7 +52,18 @@ class Makeup extends ApiController
                     $data           = $this->send_request($url.$search_term);
                     
                     return view('templates/header', ['title' => 'Makeup API'])
-                    . view('pages/makeup', [ 'data'=>$data])
+                    . view('apis/makeup', [ 'data'=>$data])
+                    . view('templates/footer');
+
+                }else
+                {
+                    $brand          = '&brand='.$_GET['brand'];
+                    $product_type   = '&product_type='.$_GET['product_type'];
+                    $search_term    = $product_type.$brand;
+                    $data           = $this->send_request($url.$search_term);
+                    
+                    return view('templates/header', ['title' => 'Makeup API'])
+                    . view('apis/makeup', ['data'=>$data])
                     . view('templates/footer');
                 }
                 
