@@ -82,7 +82,7 @@ class Blog extends BaseController
 
                 session()->setFlashData('success', 'Blog Update Successful');
                 return view('templates/header', ['title' => 'Overview'])
-                . view('blog/overview', $model->get_all_blogs())
+                . view('blog/overview', ['data'=>$model->get_all_blogs()])
                 . view('templates/footer');
             }
             

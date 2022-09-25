@@ -72,7 +72,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="/makeup">
+                            <a class="nav-link" href="/apis/index">
                                 <div class="sb-nav-link-icon"><i class="fas fa-cube"></i></div>
                                 API Workings
                             </a>
@@ -162,7 +162,6 @@
                 </nav>
             </div>
         </div>
-        <br><br>
 <hr>
         <div class="alerts container-fluid">
         <?php

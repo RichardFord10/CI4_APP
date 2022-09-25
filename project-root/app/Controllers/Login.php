@@ -32,11 +32,15 @@ class Login extends BaseController
                     'logged_in'     => TRUE
                 ];
                 session()->set($ses_data);
+                $dashboard = new Dashboard();
                 $data = [
                     'title' => 'Login',
+                    '$data' => $dashboard->index()
                 ];
                 session()->setFlashdata('success', 'Login Success!');
+                
                 return view('templates/header',$data).view('/pages/dashboard').view('templates/footer');
+
             }else{
                 $data = [
                     'title' => 'Login',

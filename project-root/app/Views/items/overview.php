@@ -56,10 +56,10 @@
                                         <?php echo ($item['qty']); ?>
                                     </td>
                                     <td>
-                                        <?php echo ("$" . $item['cost'] / 100); ?>
+                                        <?php echo ("$" . number_format($item['cost'], 2)); ?>
                                     </td>
                                     <td>
-                                        <?php echo ("$" . $item['price'] / 100); ?>
+                                        <?php echo ("$" . number_format($item['price'], 2)); ?>
                                     </td>
                                     <td>
                                         <?php echo (!empty($item['color'])) ?  ucfirst($item['color']) : $item['color']; ?>

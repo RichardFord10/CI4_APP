@@ -22,55 +22,52 @@ class Makeup extends ApiController
 {
 
     public function index()
-    {
-        $search_term = '';
-        $url = 'http://makeup-api.herokuapp.com/api/v1/products.json?';
-
+    { 
         if(!isset($_GET['makeup_form']))
         {
-            //initial page load
+            $search_term = NULL;
+
+            $_SESSION['search'] = $search_term;
             return view('templates/header', ['title' => 'Makeup API'])
             . view('apis/makeup')
             . view('templates/footer');
-        
+
+            
         }else{
 
-                if(isset($_GET['product_type']))
-                {
-                    $product_type   = '&product_type='.$_GET['product_type'];
-                    $search_term    = $product_type;
-                    $data           = $this->send_request($url.$search_term);
-                    
-                    return view('templates/header', ['title' => 'Makeup API'])
-                    . view('apis/makeup', [ 'data'=>$data])
-                    . view('templates/footer');
-                    
-                }elseif(isset($_GET['brand']))
-                {
-                    $brand          = '&brand='.$_GET['brand'];
-                    $search_term    = $brand;
-                    $data           = $this->send_request($url.$search_term);
-                    
-                    return view('templates/header', ['title' => 'Makeup API'])
-                    . view('apis/makeup', [ 'data'=>$data])
-                    . view('templates/footer');
-
-                }else
-                {
-                    $brand          = '&brand='.$_GET['brand'];
-                    $product_type   = '&product_type='.$_GET['product_type'];
-                    $search_term    = $product_type.$brand;
-                    $data           = $this->send_request($url.$search_term);
-                    
-                    return view('templates/header', ['title' => 'Makeup API'])
-                    . view('apis/makeup', ['data'=>$data])
-                    . view('templates/footer');
-                }
+            $search_term = '';
+            $url = 'http://makeup-api.herokuapp.com/api/v1/products.json?';
+            
+            $product_type    = '&product_type=';
+            $product_type   .= isset($_GET['product_type']) ? $_GET['product_type'] : NULL ;
+            $brand           = '&brand=';
+            $brand          .= isset($_GET['brand']) ? $_GET['brand'] : NULL;
+            
+            if(strpos($product_type, 'All'))
+            {
+                $product_type = NULL;
                 
             }
-        
+            if(strpos($brand, 'All'))
+            {
+                $brand = NULL;
+            }
+            
+            $search_term = $product_type.$brand;
+            
+            $data           = $this->send_request($url.$search_term);
+            
+            $_SESSION['search'] = $search_term;
+            return view('templates/header', ['title' => 'Makeup API'])
+            . view('apis/makeup', ['data'=>$data])
+            . view('templates/footer');
+        }
     }
+        
 }
+        
+    
+
     
 
     

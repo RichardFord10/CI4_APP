@@ -66,10 +66,16 @@ $routes->get('apis/makeup', 'ApiController::datausa');
 $routes->get('apis/makeup', 'ApiController::makeup');
 $routes->get('apis/makeup', 'ApiController::send_request');
 $routes->get('apis/makeup', 'ApiController::index');
+$routes->get('apis/datausa', 'ApiController::index');
 $routes->get('/makeup', 'ApiController::index');
+$routes->get('/datausa', 'ApiController::index');
 $routes->get('apis/index', 'ApiController::index');
 // API - Makeup page
 $routes->get('apis/makeup', 'Makeup::index');
+// API - Datausa page
+$routes->get('apis/datausa', 'Datausa::index');
+
+
 
 
 

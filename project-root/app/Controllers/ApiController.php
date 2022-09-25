@@ -26,19 +26,27 @@ class ApiController extends Controller
     public function index()
     { 
         $url = \current_url();
-        if(strpos($url, '/makeup'))
+        if(strpos($url, '/index'))
+        {
+            return $this->api_page();
+
+        }
+        elseif(strpos($url, '/makeup'))
         {
             return $this->makeup_page();
+
+        }elseif(strpos($url, '/datausa'))
+        {
+            return $this->datausa_page();
         }
-        
     }
 
 
-    public function datausa()
+    public function datausa_page()
     {
-        $data = $this->send_request('https://datausa.io/api/');
+        $d = new Datausa();
 
-        return $data;
+        return $d->index();
 
     }
 
@@ -48,6 +56,14 @@ class ApiController extends Controller
 
         return $makeup->index();
     }
+
+    public function api_page()
+    {
+        return view('templates/header', ['title' => 'Makeup API'])
+            . view('apis/index')
+            . view('templates/footer');
+    }
+
 
     public function send_request($baseurl, $search_term = NULL, $options = NULL)
     {
