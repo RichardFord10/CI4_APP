@@ -23,17 +23,13 @@ class Datausa extends ApiController
 
     public function index()
     { 
-        return view('templates/header', ['title' => 'Makeup API'])
+        $data = $this->send_request('https://harvard-api.datausa.io/api/data?Geography=50000US1000&measure=Languages%20Spoken&drilldowns=Language Spoken at Home');
+
+        return view('templates/header', ['title' => 'DataUsa API', 'data'=>$data])
             . view('apis/datausa')
             . view('templates/footer');
     }
         
 }
         
-    
-
-    
-
-    
-
 ?>

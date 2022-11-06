@@ -41,28 +41,26 @@ class ApiController extends Controller
         }
     }
 
-
+   /****************PAGES*********************************/
     public function datausa_page()
     {
         $d = new Datausa();
-
         return $d->index();
-
     }
 
     public function makeup_page()
     {
         $makeup = new Makeup();
-
         return $makeup->index();
     }
 
     public function api_page()
     {
-        return view('templates/header', ['title' => 'Makeup API'])
-            . view('apis/index')
-            . view('templates/footer');
+        return view('templates/header', ['title' => 'API Workings'])
+        . view('apis/index')
+        . view('templates/footer');
     }
+    /****************END PAGES*********************************/
 
 
     public function send_request($baseurl, $search_term = NULL, $options = NULL)
