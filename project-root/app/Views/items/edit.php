@@ -70,14 +70,6 @@
                                         </div>
                                         <input  type="text" name ="color" value="<?php echo (!empty($item['color'])) ?  ucfirst($item['color']) : $item['color'] ; ?>" id="inputGroupSelect06" class="form-control">
                                     </div>
-
-
-
-
-
-
-                                           
-                               
                                         </div>
                                     </div>
                                 </div>

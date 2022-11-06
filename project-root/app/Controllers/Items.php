@@ -70,6 +70,10 @@ class Items extends BaseController
     public function read()
     {
     }
+
+
+
+
     public function edit()
     {
         $model = model(ItemsModel::class);
@@ -87,7 +91,7 @@ class Items extends BaseController
                 'color'  => $this->request->getPost('color'),
                 'category' => $this->request->getPost('category'),
                 'brand' => $this->request->getPost('brand'),
-                'images' => $this->request->getPost('image'),
+                'images' => $this->request->getPost('image') != NULL ? $this->request->getPost('image') != NULL : NULL,
             ]);
 
             session()->setFlashData('success', 'Item Edit Success!');

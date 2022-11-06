@@ -115,7 +115,7 @@ class AppTools extends Controller
                     echo("Random Item insertion Success! Item: $name,$qty,$cost,$price,$color,$category,$brand,$images,$height,$width,$depth,$row,$shelf,$slot\n");
                     
                 }catch(Exception $e){
-                    echo($e);
+                    echo($e->getMessage());
                 }finally{
                         
                 }
