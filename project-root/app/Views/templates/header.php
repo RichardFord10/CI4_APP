@@ -24,6 +24,8 @@
      <script src="<?php echo base_url(); ?>/modules/admin/js/datatables-simple-demo.js"></script>
     <script src="<?php echo base_url(); ?>/modules/admin/js/scripts.js"></script>
     <script src="<?php echo base_url(); ?>/modules/admin/js/homescripts.js"></script>
+    <script src="<?php echo base_url(); ?>/modules/admin/js/ajax/app.js"></script>
+
 
     <!--END CHART DATA-->
     
@@ -182,9 +184,9 @@
             echo('<div class="alert alert-warning"> ' . (session()->getFlashData('message')) . ' </div>');
             unset($_SESSION['message']);
         }
-        else if (!empty($data['msg'])) {
-            echo('<div class="alert alert-success"> ' . $data['msg'] . ' </div>');
-        } ?>
+        // else if (!isset($data->msg)) {
+        //     echo('<div class="alert alert-success"> ' . print_r($data) . ' </div>');
+        // } ?>
         </div>
         
 

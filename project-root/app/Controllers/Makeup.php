@@ -12,12 +12,6 @@ $request = \Config\Services::request();
 
 
 
-
-// ['data' => $this->send_makeup_request($search_term)]
-
-$request = \Config\Services::request();
-
-
 class Makeup extends ApiController
 {
 

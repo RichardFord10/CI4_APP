@@ -1,5 +1,6 @@
 
 <!-- HTML START -->
+
 <main>
     <div class="container-fluid px-4">
         <br><Br>
@@ -129,7 +130,7 @@
                                         <?php echo (!empty($item['color'])) ?  ucfirst($item['color']) : $item['color']; ?>
                                     </td>
                                     <td>
-                                        <?php echo (ucfirst($item['brand'])); ?>
+                                        <?php echo isset($item['brand']) ? (ucfirst($item['brand'])) : NULL; ?>
                                     </td>
                                     <td>
                                         <?php echo (ucfirst($item['category'])); ?>

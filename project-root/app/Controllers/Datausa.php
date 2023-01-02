@@ -10,24 +10,25 @@ use stdClass;
 $request = \Config\Services::request();
 
 
-
-
-
-// ['data' => $this->send_makeup_request($search_term)]
-
-$request = \Config\Services::request();
-
-
 class Datausa extends ApiController
 {
 
     public function index()
-    { 
-        $data = $this->send_request('https://harvard-api.datausa.io/api/data?Geography=50000US1000&measure=Languages%20Spoken&drilldowns=Language Spoken at Home');
+    {   
+        $info = $this->send_request('https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest');
+        // $data_array = json_decode(json_encode($info));
+        // get_object_vars($info);
 
-        return view('templates/header', ['title' => 'DataUsa API', 'data'=>$data])
+        foreach($info as $key=>$value)
+        {
+        }
+
+
+        return view('templates/header', ['title' => 'DataUsa API', 'datausa'=>$info])
             . view('apis/datausa')
             . view('templates/footer');
+
+            
     }
         
 }

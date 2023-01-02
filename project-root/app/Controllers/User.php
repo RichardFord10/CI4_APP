@@ -15,4 +15,6 @@ class User extends BaseController
                 view('pages/login') .
                 view('templates/footer');
   }
+
+
 }

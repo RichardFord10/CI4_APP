@@ -15,6 +15,6 @@ namespace App\Controllers;
         $model = $this->load->model("ItemsModel");
         $items = $model->get_all_items();
 
-
     }
+
 }
